@@ -4,7 +4,6 @@ import { Paper, IconButton, Button } from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
 import imgage from 'assets/HeroImage.png';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
-import { BiChevronDownCircle } from 'react-icons/bi';
 
 
 
@@ -46,7 +45,7 @@ const items: ItemProps[] = [
 export default function HeroCarousel() {
   return (
     <Carousel
-    sx={{width:"100%", height:{xs:'30vh',md:"50vh"},borderRadius:"20px", overflow:'hidden'}}
+    sx={{width:"100%", height:{xs:'30vh',md:"50vh"},minHeight:"200px",borderRadius:"20px", overflow:'hidden'}}
     navButtonsProps={{          
       style: {
           backgroundColor: '#E8ECF4',
@@ -107,12 +106,12 @@ export default function HeroCarousel() {
 
 function CarouselItem(props: { item: ItemProps }) {
   return (
-    <Paper sx={{height:{xs:'30vh',md:"50vh"}}}>
+    <Paper sx={{height:{xs:'30vh',minHeight:"200px",md:"50vh"}}}>
       <Image 
-        className='w-full rounded-[20px] md:rounded-[30px]'
+        className='h-full w-full rounded-[20px] md:rounded-[30px] object-cover object-top'
         src={props.item.img}
         width={500}
-        height={100}
+        height={200}
         alt={props.item.name} />
     </Paper>
   );

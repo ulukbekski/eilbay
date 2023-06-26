@@ -1,7 +1,7 @@
 import React from 'react'
-import HeroCarousel from '@/components/homePageComponents/HeroCarousel';
-import LogoCardList from '@/components/homePageComponents/LogoCardList';
-import Catalog from '@/components/homePageComponents/Catalog';
+import HeroCarousel from '@/components/elements/home/HeroCarousel';
+import LogoCardList from '@/components/elements/home/LogoCardList';
+import Catalog from '@/components/elements/home/Catalog';
 import Link from 'next/link';
 
 export default function Home() {

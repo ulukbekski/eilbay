@@ -1,8 +1,7 @@
-import { Card, Grid } from '@mui/material'
 import React from 'react'
-import CompanyLogo from '@assets/image 52.svg'
-import Image from 'next/image'
-import {Container} from '@mui/material'
+import { Card, Grid ,Container} from '@mui/material';
+import CompanyLogo from '@assets/image 52.svg';
+import Image from 'next/image';
 
 const Arrray = [
     {img: CompanyLogo, id:1},
@@ -23,8 +22,8 @@ const LogoCardList = () => {
       sx={{ 
         display:"grid", 
         gridTemplateColumns:{xs:"repeat(2,49%)",sm:"repeat(3,33%)",md:"repeat(4,calc(25% - 18px))",lg:"repeat(4,calc(25% - 24px))",xl:"repeat(4,calc(25% - 32px))"}, 
-        columnGap:{xs:"5px",md:3,lg:4},
-        rowGap:{xs:"5px",md:3,lg:4} , 
+        columnGap:{xs:"5px",md:3,lg:3},
+        rowGap:{xs:"5px",md:3,lg:3} , 
         my:{xs:2,md:3,lg:4} , 
         alignContent:'center',
         width:"100%",
@@ -39,8 +38,7 @@ const LogoCardList = () => {
             <Image 
             src={obj.img} 
             className='w-full'
-
-            alt='some text' 
+            alt='some text'
             width={100} 
             height={150}/>
         </Card>)}
@@ -48,5 +46,4 @@ const LogoCardList = () => {
     </Container>
   )
 }
-
-export default LogoCardList
+export default LogoCardList;

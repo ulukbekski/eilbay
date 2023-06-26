@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app'
 import { createTheme, ThemeProvider } from '@mui/material'
 import Layout from '@/components/Layout';
+import { store } from '@/store/favorites'
+import { Provider } from 'react-redux'
 
 import '@/styles/globals.css'
 import '../styles/user.scss'
@@ -50,6 +52,10 @@ const theme = createTheme({
     body1:{
       fontSize:22,
     },
+    body2:{
+      fontSize:"14px",
+      fontWeight:400,
+    },
     h1: {
       fontSize: '48px',
       fontWeight: 700,
@@ -62,8 +68,11 @@ const theme = createTheme({
     h3: {
       fontSize: '32px',
       fontWeight: 700,
+    },
+    h6:{
+      fontSize:"20px",
+      fontWeight:600,
     }
-    
   },
   
 })
@@ -72,11 +81,13 @@ const theme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   const AnyComponent = Component as any;
   return(
-  <ThemeProvider theme={theme}>
-    <Layout>
-      <AnyComponent {...pageProps} />
-    </Layout>
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <AnyComponent {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  </Provider>
     
   )
 }
