@@ -1,7 +1,7 @@
-import { Validations } from './validations'
+import { validations } from './validations'
 import { Regex } from './regex'
 
 export const Forms = {
-    Validations,
+    validations,
     Regex,
 }

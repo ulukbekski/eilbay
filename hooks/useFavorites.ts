@@ -1,4 +1,4 @@
-import { RootState } from "@/store/favorites"
+import { RootState } from "@/store"
 import { useSelector } from "react-redux"
 
 export const useFavorites = () => {

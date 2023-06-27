@@ -63,7 +63,7 @@ function Header() {
             <BiChat className='text-xl m-auto'/>
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Чат</Typography>
           </Button>
-          <Button sx={{display:"block", color:'white'}}>
+          <Button sx={{display:"block", color:'white'}} href={`/user/login`}>
             <FaRegUser className='text-xl m-auto'/>
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Профиль</Typography>
           </Button>

@@ -51,3 +51,11 @@ input[type=number] {
 .flex-between {
   @apply flex justify-between items-center;
 }
+button, [type='button'], [type='reset'], [type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+.dark-button{
+  background: #1E232C;
+}

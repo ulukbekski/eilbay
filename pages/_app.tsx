@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { createTheme, ThemeProvider } from '@mui/material'
 import Layout from '@/components/Layout';
-import { store } from '@/store/favorites'
+import { store } from '@/store'
 import { Provider } from 'react-redux'
 
 import '@/styles/globals.css'
