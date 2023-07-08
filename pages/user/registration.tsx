@@ -5,8 +5,10 @@ import { Typography, TextField, InputAdornment, IconButton, Button, Box, Divider
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { DarkButton } from '@/components/UI/DarkButton';
 import { useForm } from 'react-hook-form';
-import { validations } from '@/utils/forms/validations';
+import { Registrvalidations } from '@/utils/forms/validations';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { CreateUserDto } from '@/utils/api/types';
+import { userApi } from '@/utils/api';
 
 function Registration() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -14,22 +16,22 @@ function Registration() {
 
   const form = useForm({
     mode: 'onChange',
-    resolver: yupResolver(validations),
+    resolver: yupResolver(Registrvalidations),
   });
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
   const handleClickShowPasswordCopy = () => setShowPasswordCopy((show) => !show);
-  const handleMouseDownPasswordCopy = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
 
-  const onSubmit = (data:object) => {
-    console.log(data);
-    // Perform form submission logic here
+  const handleMouseDownPassword = (event: any) => { event.preventDefault()};
+
+  const onSubmit = async (dto:CreateUserDto) => {
+    try {
+      const data = await userApi.register(dto)
+      console.log(data);
+    }catch(err){
+      alert("jilo");
+      console.log(err);
+    }
   };
 
   return (
@@ -49,13 +51,15 @@ function Registration() {
           </Typography>
 
           <Box sx={{ mx: "auto", maxWidth: 400, width: "100%" }}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form 
+            onSubmit={form.handleSubmit(onSubmit)}>
+
               <TextField 
                 {...form.register('username')}
                 type='text'
                 sx={{ mt: '40px'}}
                 fullWidth 
-                id='outlined-adornment' 
+                id='outlned-adornment' 
                 label="Имя пользователя"
                 helperText={form.formState.errors.username?.message}
                 error={!!form.formState.errors.username?.message}
@@ -66,7 +70,7 @@ function Registration() {
                 type="email" 
                 sx={{ my: 2}}
                 fullWidth
-                id='outlined-adornment' 
+                id='outlied-adornmento' 
                 label="Email"
                 helperText={form.formState.errors.email?.message}
                 error={!!form.formState.errors.email?.message}
@@ -75,7 +79,7 @@ function Registration() {
               <TextField
                 {...form.register('password')}
                 variant="outlined"
-                id="outlined-adornment-password"
+                id="outlind-adornment-password"
                 fullWidth
                 sx={{mb: 2}}
                 type={showPassword ? 'text' : 'password'}
@@ -84,7 +88,7 @@ function Registration() {
                 error={!!form.formState.errors.password?.message}
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">
+                    <InputAdornment position="end" id="pass">
                       <IconButton
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}
@@ -95,12 +99,11 @@ function Registration() {
                       </IconButton>
                     </InputAdornment>
                   ),
-                }}
-              />
+                }}/>
 
-              <TextField
+              <TextField 
                 {...form.register('confirmPassword')}
-                id="outlined-adornment-passwordCopy"
+                id="outline-adornment-passwordCopy"
                 type={showPasswordCopy ? 'text' : 'password'}
                 label="Подтверждение пароля"
                 helperText={form.formState.errors.confirmPassword?.message}
@@ -109,23 +112,23 @@ function Registration() {
                 fullWidth
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">
+                    <InputAdornment position="end" id="passcopy">
                       <IconButton
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPasswordCopy}
-                        onMouseDown={handleMouseDownPasswordCopy}
+                        onMouseDown={handleMouseDownPassword}
                         edge="end"
                       >
                         {showPasswordCopy ? <VscEye /> : <VscEyeClosed />}
                       </IconButton>
                     </InputAdornment>
                   ),
-                }}
-              />
+                }}/>
 
               <DarkButton
-                disabled={!form.formState.isValid}
+                disabled={!form.formState.isValid || form.formState.isSubmitting}
                 variant="contained"
+                type='submit'
                 className='dark-button'
                 sx={{ my: 2, width: "100%", bgcolor: "#1E232C", fontSize: 16, fontWeight: 700, color: 'white', borderRadius: 2 }}
               >

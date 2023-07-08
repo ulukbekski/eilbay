@@ -17,10 +17,7 @@ function Login() {
   });
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event:any) => {
-    event.preventDefault();
-  };
-  console.log(form.formState.isValid);
+  const handleMouseDownPassword = (event:any) => {event.preventDefault();};
   
   const onSubmit = (data:any) => {
     console.log(data);
@@ -58,7 +55,7 @@ function Login() {
                 error={!!form.formState.errors.password?.message}
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">
+                    <InputAdornment position="end" id="ad">
                       <IconButton
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}

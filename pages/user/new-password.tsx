@@ -16,7 +16,6 @@ function NewPassword() {
   });
   const onSubmit = (data:object) => {
     console.log(data);
-    // Perform form submission logic here
   };
   const [showPassword, setShowPassword] = React.useState(false);
   const [showPasswordCopy, setShowPasswordCopy] = React.useState(false);

@@ -4,15 +4,20 @@ import Link from 'next/link'
 import { Typography } from '@mui/material'
 import BigImg from '@/assets/rafiki.svg'
 import logo from '@/assets/Eilibay.svg'
+import Head from 'next/head'
 
 function UserAnimation() {
   return (
     <div className="md:w-6/12 px-[15px] pb-10 text-center hidden h-[650px] md:block ">
+      <Head>
+      </Head>
       <div className="logo">
         <Image
           className='m-auto mb-2.5 md:w-[60px]'
           src={logo}
           width={80}
+          height={100}
+    
           alt="logo img " />
       </div>
 
@@ -20,11 +25,12 @@ function UserAnimation() {
         Eilibay
       </Typography>
       <Image
-        className='m-auto mt-10 md:mt-5'
         src={BigImg}
-        priority={true}
-        width={450}
-        alt="man big phone img"/>
+        alt="Rafiki"
+        width={500}
+        height={500}
+   
+      />
 
       <span><Link href="/" className='underline font-bold mt-7'>Политика конфиденциальности </Link></span>
     </div>
