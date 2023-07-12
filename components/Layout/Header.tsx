@@ -56,7 +56,8 @@ function Header() {
         </nav>
         <nav className='none justify-around gap-[4px] hidden md:flex'  >
           <Button sx={{display:"block", color:'white'}}>
-            <HiOutlineHeart className='text-xl m-auto'/>{favorites.length}
+            <HiOutlineHeart className='text-xl m-auto'/>
+            {/* {favorites.length} */}
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Избранное</Typography>
           </Button>
           <Button sx={{display:"block", color:'white'}}>

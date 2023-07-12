@@ -1,15 +1,19 @@
 import React from "react";
 import Link from "next/link";
-import { Typography, TextField, InputAdornment, IconButton, Button, Box, Divider } from "@mui/material";
+import { Typography, TextField, InputAdornment, IconButton, Button,Alert, Box, Divider } from "@mui/material";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import UserAnimation from "@/components/UI/UserAnimation";
 import { DarkButton } from "@/components/UI/DarkButton";
 import { useForm } from "react-hook-form";
 import { LoginValidations } from "@/utils/forms/validations";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { LoginDto } from "@/utils/api/types";
+import { setCookie } from "nookies";
+import { userApi } from "@/utils/api";
 
 function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState("")
 
   const form = useForm({
     mode: "onChange",
@@ -19,9 +23,17 @@ function Login() {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event:any) => {event.preventDefault();};
   
-  const onSubmit = (data:any) => {
-    console.log(data);
-    // Perform form submission logic here
+  const onSubmit = async (dto: LoginDto) => {
+    try {
+      const data = await userApi.login(dto);
+      setCookie(null, "authToken", data.token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
+    } catch (err) {
+      console.log( "ошибка", err);
+      setErrorMessage("Неверный email или пароль!")
+    }
   };
 
   return (
@@ -70,9 +82,12 @@ function Login() {
                 variant="outlined"
                 fullWidth
               />
+
+              {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+
               <Link href="/user/emailRequest" className="block w-fit ml-auto no-underline font-bold hover:underline">Забыли пароль?</Link>
               <DarkButton
-                disabled={!form.formState.isValid}
+                disabled={!form.formState.isValid || form.formState.isSubmitting}
                 type="submit"
                 className='dark-button'
                 variant="contained"

@@ -3,6 +3,16 @@ export type LoginDto = {
     password: string;
 }
 export type CreateUserDto = {
+    email: string;
+    password: string;
     fullName: string;
-    confirmPassoword: string;
-} & LoginDto;
+};
+
+export type ResponseUser = {
+    createdAt: string;
+    email: string;
+    fullName: string;
+    id: number;
+    token: string;
+    updatedAt: string;
+}

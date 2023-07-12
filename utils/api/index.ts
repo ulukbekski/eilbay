@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CreateUserDto , LoginDto} from "./types";
+import { CreateUserDto , LoginDto, ResponseUser} from "./types";
 
 
 const instance = axios.create({
@@ -9,11 +9,11 @@ const instance = axios.create({
 
 export const userApi = {
     async register(dto: CreateUserDto) {
-        const {data} = await instance.post("/auth/register", dto)
+        const {data} = await instance.post<CreateUserDto, {data:ResponseUser}>("/auth/register", dto)
         return data;
     },
     async login(dto: LoginDto) {
-        const {data} = await instance.post("/auth/login", dto)
+        const {data} = await instance.post<LoginDto, {data:ResponseUser}>("/auth/login", dto)
         return data;
     }
 }
