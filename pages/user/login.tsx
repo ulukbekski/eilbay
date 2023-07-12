@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Typography, TextField, InputAdornment, IconButton, Button,Alert, Box, Divider } from "@mui/material";
+import Button from "@mui/material/Button";
+import { Typography, TextField, InputAdornment, IconButton, Alert, Box, Divider } from "@mui/material";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import UserAnimation from "@/components/UI/UserAnimation";
 import { DarkButton } from "@/components/UI/DarkButton";

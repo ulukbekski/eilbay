@@ -1,7 +1,7 @@
 import React from 'react';
 import UserAnimation from '@/components/UI/UserAnimation';
 import Link from "next/link";
-import { Typography, TextField, InputAdornment, IconButton, Button, Box, Divider } from "@mui/material";
+import { Typography, TextField, InputAdornment, IconButton, Box} from "@mui/material";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { DarkButton } from '@/components/UI/DarkButton';
 import { useForm } from 'react-hook-form';

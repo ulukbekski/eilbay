@@ -2,7 +2,8 @@ import React from 'react';
 import logo from '@/assets/butterfly.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Typography, Button, Container,Box , TextField} from '@mui/material';
+import Button from '@mui/material/Button';
+import { Typography, Container, Box , TextField} from '@mui/material';
 import {CgShoppingBag} from 'react-icons/cg'
 
 
