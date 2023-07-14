@@ -13,7 +13,6 @@ const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          // Customize the root style of TextField
           backgroundColor: 'lightgray',
           border:"white solid 1px",
           borderRadius: "8px",

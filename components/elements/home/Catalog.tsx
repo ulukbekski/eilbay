@@ -39,7 +39,7 @@ const productData = [
     description: 'This is the description of Product 3.',
     image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
     price: 1900,
-    rating: 4.9,
+    rating: 4.1,
     ratingAmount: 2339,
   },
 ];
