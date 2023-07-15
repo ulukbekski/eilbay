@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 
-import AccordionComponent from './Accordion';
+import AccordionComponent from '../UI/Accordion';
 
 
 
@@ -32,11 +32,11 @@ const Offcanvas = () => {
         edge="start"
         color="inherit"
         aria-label="menu"
-        onClick={toggleDrawer(true)}
-        className={`relative  md:w-[48px] lg:mr-[60px] min-w-[32px]  h-[32px] cursor-pointer p-0`} >
-            <div className={open?"w-full h-[3px] bg-white absolute top-0 rounded ":"rotate-45 w-full h-[3px] bg-white absolute top-4 rounded"}></div>         
-            <div className={open?"w-3/5 h-[3px] bg-white absolute top-0 rounded bottom-0 m-auto left-0 ":"hidden"}></div>
-            <div className={open?"w-full h-[3px] bg-white absolute bottom-0  rounded":"-rotate-45 w-full h-[3px] bg-white absolute top-4 rounded"}></div>
+        onClick={toggleDrawer(!open)}
+        className={`relative  md:w-[48px]  min-w-[32px]  h-[28px] p-0`} >
+            <div className={!open?"w-full h-[2px] bg-white absolute top-0 rounded ":"rotate-45 w-full h-[3px] bg-white absolute top-4 rounded"}></div>         
+            <div className={!open?"w-3/5 h-[2px] bg-white absolute top-0 rounded bottom-0 m-auto left-0 ":"hidden"}></div>
+            <div className={!open?"w-full h-[2px] bg-white absolute bottom-0  rounded":"-rotate-45 w-full h-[3px] bg-white absolute top-4 rounded"}></div>
       </IconButton>
       <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
       <AccordionComponent

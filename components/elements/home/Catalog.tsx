@@ -8,7 +8,8 @@ import {
   MenuItem,
   SelectChangeEvent,
   OutlinedInput,
-  InputAdornment
+  InputAdornment,
+  Button
 } from '@mui/material';
 import ProductCard from './Card';
 
@@ -149,6 +150,7 @@ function Catalog() {
           />
         ))}
       </div>
+      <Button sx={{px:"64px",py:"16px",borderRadius:2,margin:"auto",background:"#3190FF"}}>Еще</Button>
     </Container>
   );
 }

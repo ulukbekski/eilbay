@@ -61,7 +61,7 @@ const Search: React.FC<SearchProps> = ({ onSearch}) => {
     setQuery(event.target.value);
   };
   return (
-    <Box alignItems="center" sx={{maxWidth:'500px',width:"100%",display:{xs:"none",sm:"none",md:"flex",lg:"flex"}}}>
+    <Box alignItems="center" sx={{maxWidth:'500px',width:"100%", display:{xs:"none",md:'block'}}}>
       <ThemeProvider theme={theme}>
       <TextField  
         value={query}

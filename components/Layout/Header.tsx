@@ -2,13 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import { Container,Button, Typography,IconButton} from '@mui/material'
 import logo from '@/assets/butterfly.svg';
-import Search from './HeaderSearch'
+import Search from '../UI/HeaderSearch'
 import { HiOutlineHeart } from 'react-icons/hi';
 import { BiChat } from 'react-icons/bi'
 import {FaRegUser} from 'react-icons/fa';
-import LanguageSelect from './LanguageSelect';
+import LanguageSelect from '../UI/LanguageSelect';
 import { useFavorites } from '@/hooks/useFavorites';
-import Offcanvas from '../UI/Offcanvas';
+import Offcanvas from './Offcanvas';
 
 
 
@@ -21,10 +21,10 @@ function Header() {
   
   return (
     <header className='bg-default h-[100px] flex items-center '>
-      <Container sx={{display:'flex',alignItems:"center",justifyContent:"space-around",p:{xs:0,sm:1}, width:"100%"}}>
+      <Container sx={{display:'flex',alignItems:"center",justifyContent:"space-around",p:{xs:0,sm:1}, width:"100%",gap:1}}>
         
         <Offcanvas/>
-        <Button>
+        <Button href='/' sx={{flexShrink:0,}}>
           <Image
             src={logo}
             width={42}
@@ -32,30 +32,26 @@ function Header() {
             alt="logo img " />
           <Typography 
             variant='h4' 
-            sx={{textTransform:'none', color:'white',ml:1,mr:{xs:1,sm:2,md:7.5},fontSize:{ xs: 24, md: 30, lg: 36, xl: 40 }}}
+            sx={{textTransform:'none', color:'white',fontSize:{ xs: 24, md: 30, lg: 36, xl: 40 }}}
             >
               Eilibay
           </Typography>
 
         </Button>
         <Search onSearch={handleSearch}  />
-          <LanguageSelect/>
-        <nav>
-          <IconButton sx={{display:"block", color:'white'}}>
-          <BiChat className='block md:hidden text-4xl m-auto'/>
-          </IconButton>
-        </nav>
-        <nav className='none justify-around gap-[4px] hidden md:flex'  >
-          <Button sx={{display:"block", color:'white'}}>
+        <LanguageSelect/>
+        
+        <nav className='gap-[4px] flex p-2'  >
+          <Button sx={{ color:'white',p:0, display:{xs:"none",md:'block'}}}>
             <HiOutlineHeart className='text-xl m-auto'/>
             {/* {favorites.length} */}
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Избранное</Typography>
           </Button>
-          <Button sx={{display:"block", color:'white'}}>
-            <BiChat className='text-xl m-auto'/>
-            <Typography sx={{fontSize:"14px",textTransform:'none'}}>Чат</Typography>
+          <Button sx={{display:"block",p:0, color:'white'}}>
+            <BiChat className='text-4xl md:text-xl m-auto'/>
+            <Typography  sx={{fontSize:"14px",textTransform:'none',display:{xs:"none",md:'block'}}}>Чат</Typography>
           </Button>
-          <Button sx={{display:"block", color:'white'}} href={true? "/user/profile/id": "/user/login"}>
+          <Button sx={{display:{xs:"none",md:'block'},p:0, color:'white'}} href={true? "/user/profile/id": "/user/login"}>
             <FaRegUser className='text-xl m-auto'/>
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Профиль</Typography>
           </Button>
