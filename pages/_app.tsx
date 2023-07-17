@@ -42,10 +42,12 @@ const theme = createTheme({
   ,
   palette:{
     primary:{
-      main:"#1E232C"
+      main:"#1E232C",
+      dark:'#3190FF'
     },
     secondary:{
-      main:'#8391A1'
+      main:'#8391A1',
+      
     },  
   },
   typography:{

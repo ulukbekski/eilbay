@@ -8,11 +8,17 @@ import { BiChat } from 'react-icons/bi'
 import {FaRegUser} from 'react-icons/fa';
 import LanguageSelect from '../UI/LanguageSelect';
 import { useFavorites } from '@/hooks/useFavorites';
-import Offcanvas from './Offcanvas';
+import MenuIconButton from '../UI/MenuIconButton';
+
+
+interface SidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void; 
+}
 
 
 
-function Header() {
+function Header({isOpen, toggleSidebar}:SidebarProps) {
 
   const handleSearch = (query: string) => {
     console.log("Search query:", query);
@@ -22,8 +28,8 @@ function Header() {
   return (
     <header className='bg-default h-[100px] flex items-center '>
       <Container sx={{display:'flex',alignItems:"center",justifyContent:"space-around",p:{xs:0,sm:1}, width:"100%",gap:1}}>
-        
-        <Offcanvas/>
+        <MenuIconButton isOpen={isOpen} toggleSidebar={toggleSidebar}/>
+        {/* <SideBarToggleButton/> */}
         <Button href='/' sx={{flexShrink:0,}}>
           <Image
             src={logo}

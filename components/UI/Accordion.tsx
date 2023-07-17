@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { makeStyles } from '@mui/styles';
+
 import {
   Accordion,
   AccordionDetails,
@@ -17,15 +17,7 @@ interface Props {
   categories: Category[];
 }
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     width: '100%',
-//   },
-//   heading: {
-//     fontSize: theme.typography.pxToRem(15),
-//     fontWeight: theme.typography.fontWeightRegular,
-//   },
-// }));
+
 
 const AccordionComponent: React.FC<Props> = ({ categories }) => {
 

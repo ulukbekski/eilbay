@@ -1,9 +1,10 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, IconButton, Button } from '@mui/material';
+import { Paper, Container} from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
 import imgage from 'assets/HeroImage.png';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { relative } from 'path';
 
 
 
@@ -44,8 +45,13 @@ const items: ItemProps[] = [
 
 export default function HeroCarousel() {
   return (
+
+<Container sx={{p:"0 !important", minHeight:"300px",position:"relative"}}>
     <Carousel
-    sx={{width:"100%", height:{xs:'30vh',md:"50vh"},minHeight:"200px",borderRadius:"20px", overflow:'hidden'}}
+    sx={{width:"100%", 
+        borderRadius:"20px", 
+        position:"relative",
+        overflow:'hidden'}}
     navButtonsProps={{          
       style: {
           backgroundColor: '#E8ECF4',
@@ -86,7 +92,6 @@ export default function HeroCarousel() {
     }}
     indicatorContainerProps={{
       style: {
-        
         display:"flex",
         justifyContent: "center",
         gap: "22px",
@@ -94,26 +99,28 @@ export default function HeroCarousel() {
       }
 
   }}
-    className='container'
+    
     NextIcon={<ChevronRight className='text-4xl'/>}
-    PrevIcon={<ChevronLeft className='text-4xl'/>}
+    PrevIcon={<ChevronLeft className='text-4xl'/>}>
 
-    >
       {items.map((item, i) => <CarouselItem key={i} item={item} />)}
+
     </Carousel>
+    </Container>
   );
 }
 
 function CarouselItem(props: { item: ItemProps }) {
   return (
-    <Paper sx={{height:{xs:'30vh',minHeight:"200px",md:"50vh"}}}>
-      <Image 
-        className='h-full w-full rounded-[20px] md:rounded-[30px] object-cover object-top'
-        src={props.item.img}
-        width={500}
-        height={200}
-        alt={props.item.name} />
-    </Paper>
+    
+      <Paper sx={{maxHeight:'500px',minHeight:"300px"}}>
+        <Image 
+          className='h-full object-cover object-top'
+          src={props.item.img}
+          width={500}
+          alt={props.item.name} />
+      </Paper>
+   
   );
 }
 

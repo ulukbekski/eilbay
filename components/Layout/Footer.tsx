@@ -3,7 +3,7 @@ import logo from "@/assets/butterfly.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { CgShoppingBag } from "react-icons/cg";
-import MobileFooter from "./MobileFooterNavigation";
+import MobileFooter from "./MobileFooter";
 
 import {
   Typography,

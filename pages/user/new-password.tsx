@@ -1,5 +1,5 @@
 import React from 'react';
-import UserAnimation from '@/components/UI/UserAnimation';
+import UserAnimation from '@/components/Layout/UserAnimation';
 import Link from "next/link";
 import { Typography, TextField, InputAdornment, IconButton, Box} from "@mui/material";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";

@@ -11,7 +11,7 @@ import {
   InputAdornment,
   Button
 } from '@mui/material';
-import ProductCard from './Card';
+import ProductCard from '../../UI/Card';
 
 
 
@@ -115,8 +115,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ obj }) => {
 
 function Catalog() {
   return (
-    <Container>
-      <div className="flex-start text-black gap-2">
+    <Container sx={{mt:1}}>
+      <div className="flex-start text-black gap-2 ">
         <Typography variant="h2">Женская одежда</Typography>
         <p>10000+ товаров</p>
       </div>
@@ -150,7 +150,7 @@ function Catalog() {
           />
         ))}
       </div>
-      <Button sx={{px:"64px",py:"16px",borderRadius:2,margin:"auto",background:"#3190FF"}}>Еще</Button>
+      <Button variant='contained' className='bg-info block my-3 mx-auto px-16 py-4 rounded-lg' >Еще</Button>
     </Container>
   );
 }
