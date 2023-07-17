@@ -1,48 +1,54 @@
-import React from "react";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import amico from "@assets/amico.png";
 import imageUrl from "@assets/imageUrl.png";
 
-export default function EilbayFilials() {
+
+
+interface Props {}
+
+export default function EilbayFilials(props: Props) {
+  
   return (
-    <div className="mt-3 mb-10">
-      <div className="container">
-        <h1>Пункты выдачи Eilbay</h1>
-
-        <div className="flex justify-between">
+    <Box mt={3} mb={10}>
+      <Container maxWidth="lg">
+        <Typography variant="h1" color="primary" textAlign='center'>Пункты выдачи Eilbay</Typography>
+        <Box display="flex" justifyContent="space-around"  alignItems="center" flexWrap="wrap-reverse">
           <Image
             src={amico}
-            className="w-full"
-            alt="some text"
-            width={100}
-            height={100}
+            alt="Possible animation"
+            priority={true}
+            width={200}
+            height={250}
           />
 
-          <div className="flex">
-            <ul>
-              <li>KG - г. Ош</li>
-              <li>UZ - г. Ташкент</li>
-              <li>KZ - г. Алматы</li>
-              <li>RU - г. Москва</li>
-              <li>GR - г. Берлин</li>
-            </ul>
-            <ul>
-              <li>Средняя Азия</li>
-              <li>Средняя Азия</li>
-              <li>Средняя Азия</li>
-              <li>Европа</li>
-              <li>Европа</li>
-            </ul>
-          </div>
+          <Box display="flex" minWidth="400px"  justifyContent='space-between' >
+              <Typography component="ul" color='primary' whiteSpace="nowrap">
+                <Typography component="li">KG - г. Ош</Typography>
+                <Typography component="li">UZ - г. Ташкент</Typography>
+                <Typography component="li">KZ - г. Алматы</Typography>
+                <Typography component="li">RU - г. Москва</Typography>
+                <Typography component="li">GR - г. Берлин</Typography>
+              </Typography>
+              
+              <Typography component="ul" color='primary' whiteSpace="nowrap">
+                <Typography component="li">Средняя Азия</Typography>
+                <Typography component="li">Средняя Азия</Typography>
+                <Typography component="li">Средняя Азия</Typography>
+                <Typography component="li">Европа</Typography>
+                <Typography component="li">Европа</Typography>
+              </Typography>
+            
+          </Box>
+
           <Image
-            src={amico}
-            className="w-full"
+            src={imageUrl}
             alt="some text"
-            width={100}
-            height={100}
+            width={200}
+            height={250}
           />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Container>
+    </Box>
   );
 }

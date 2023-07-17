@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import Drawer from '@mui/material/Drawer';
-
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButton } from '@mui/material';
 import AccordionComponent from '../UI/Accordion';
 import { makeStyles } from '@mui/styles';
 
@@ -29,9 +30,6 @@ const useStyles = makeStyles({
   drawer: {
     transition: "1s",
     width: 300,
-    flexShrink: 0,
-    marginTop:1
-    
   },
   drawerClosed:{
     width:0,
@@ -40,26 +38,34 @@ const useStyles = makeStyles({
     overflow: "hidden",
   },
   drawerPaper: {
-    width: "100%",
-    position: "static",
-    transition: "1s"
+    width: "300px",
+    top:0,
+    left:0,
+    transition: "1s",
+    position:"static",
   },
 });
 
 const Sidebar: React.FC<SidebarProps>= ({ isOpen, onClose }) => {
   const classes = useStyles();
 
+
   return (
     <>
       <Drawer 
         anchor="left" 
-        variant='persistent'
+        
         className={isOpen?classes.drawer:classes.drawerClosed}
         open={isOpen} 
         onClose={onClose}
         classes={{
           paper: classes.drawerPaper,
         }}> 
+        <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
+          <IconButton aria-label="close" onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        </div>
       <AccordionComponent categories={categories} />
       </Drawer>
     </>

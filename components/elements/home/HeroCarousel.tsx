@@ -46,12 +46,12 @@ const items: ItemProps[] = [
 export default function HeroCarousel() {
   return (
 
-<Container sx={{p:"0 !important", minHeight:"300px",position:"relative"}}>
+<Container sx={{p:4, minHeight:"300px",position:"relative"}}>
     <Carousel
-    sx={{width:"100%", 
+    sx={{ 
         borderRadius:"20px", 
-        position:"relative",
-        overflow:'hidden'}}
+       
+        }}
     navButtonsProps={{          
       style: {
           backgroundColor: '#E8ECF4',
@@ -103,7 +103,7 @@ export default function HeroCarousel() {
     NextIcon={<ChevronRight className='text-4xl'/>}
     PrevIcon={<ChevronLeft className='text-4xl'/>}>
 
-      {items.map((item, i) => <CarouselItem key={i} item={item} />)}
+    {items.map((item, i) => <CarouselItem key={i} item={item} />)}
 
     </Carousel>
     </Container>
@@ -113,13 +113,13 @@ export default function HeroCarousel() {
 function CarouselItem(props: { item: ItemProps }) {
   return (
     
-      <Paper sx={{maxHeight:'500px',minHeight:"300px"}}>
+      <Paper sx={{height:'400px', width:"100%"}}>
         <Image 
-          className='h-full object-cover object-top'
+          className='w-full h-full object-cover object-top rounded-xl'
           src={props.item.img}
-          width={500}
+          width={800}
           alt={props.item.name} />
-      </Paper>
+        </Paper>
    
   );
 }
