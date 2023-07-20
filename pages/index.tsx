@@ -2,16 +2,25 @@ import React from 'react'
 import HeroCarousel from '@/components/elements/home/HeroCarousel';
 import LogoCardList from '@/components/elements/home/LogoCardList';
 import Catalog from '@/components/elements/home/Catalog';
-import Link from 'next/link';
+import EilbayFilials from '@/components/elements/home/EilbayFilials';
+import axios from 'axios';
 
 export default function Home() {
+
+  React.useEffect(() => {
+    const func = async () => {
+      const res =  await axios.get('https://jsonplaceholder.typicode.com/users')
+      console.log(res.data)
+    }
+    func();
+  })
   return (
-    <main className={`flex min-h-screen flex-col items-center justify-between py-[24px] px-1 md:px-[32px]`} >
+    <>
       <HeroCarousel/>
       <LogoCardList/>
       <Catalog/>
-    
-      <Link href="/user/login" className='text-black'>login/registration</Link> 
-    </main>
+      <EilbayFilials/>
+    </>
   )
+
 }

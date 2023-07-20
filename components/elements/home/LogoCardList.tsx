@@ -17,20 +17,18 @@ const Arrray = [
 
 const LogoCardList = () => {
   return (
-    <Container sx={{px:{xs:0}}}>
+    <Container>
       <Grid 
       sx={{ 
         display:"grid", 
-        gridTemplateColumns:{xs:"repeat(2,49%)",sm:"repeat(3,33%)",md:"repeat(4,calc(25% - 18px))",lg:"repeat(4,calc(25% - 24px))",xl:"repeat(4,calc(25% - 32px))"}, 
-        columnGap:{xs:"5px",md:3,lg:3},
-        rowGap:{xs:"5px",md:3,lg:3} , 
-        my:{xs:2,md:3,lg:4} , 
-        alignContent:'center',
+        gridTemplateColumns:{xs:"repeat(2,1fr)",sm:"repeat(3,1fr)",md:"repeat(4,1fr)"}, 
+        columnGap:{xs:"5px",md:3,},
+        rowGap:{xs:"5px",md:3} , 
+        m:"auto",
+        my:{md:3} , 
         width:"100%",
-        m:"auto"
-      }}
-      
-      >
+        
+      }}>
         {Arrray.map(obj => 
         <Card key={obj.id}
         sx={{border:"1px solid #1E232C", 

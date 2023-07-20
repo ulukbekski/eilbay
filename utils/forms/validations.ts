@@ -1,9 +1,6 @@
 
 import * as yup from "yup"
 
-
-
-
 export const PasswordValidations = yup.object().shape({
   password: yup.string().min(6, "Пароль должен быть более 6 символов").required("Пароль обязателный!"),
   confirmPassword: yup.string().required("Подтверждение пароля обязательно")

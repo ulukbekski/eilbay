@@ -8,12 +8,12 @@ import Head from 'next/head'
 
 function UserAnimation() {
   return (
-    <div className="md:w-6/12 px-[15px] pb-10 text-center hidden h-[650px] md:block ">
+    <div className="md:w-6/12 px-[15px] py-5 text-center hidden h-[650px] md:block ">
       <Head>
       </Head>
       <div className="logo">
         <Image
-          className='m-auto mb-2.5 md:w-[60px]'
+          className='m-auto mb-2.5 w-10 md:w-[60px]'
           src={logo}
           width={80}
           height={100}

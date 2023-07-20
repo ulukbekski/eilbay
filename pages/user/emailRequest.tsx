@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from "next/link"
 import { Typography, TextField, Box } from "@mui/material"
-import UserAnimation from "@/components/UI/UserAnimation";
+import UserAnimation from "@/components/Layout/UserAnimation";
 import { DarkButton } from '@/components/UI/DarkButton';
 import { useForm } from "react-hook-form";
 import { EmailValidations } from "@/utils/forms/validations";

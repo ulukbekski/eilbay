@@ -3,7 +3,7 @@ import Link from "next/link";
 import Button from "@mui/material/Button";
 import { Typography, TextField, InputAdornment, IconButton, Alert, Box, Divider } from "@mui/material";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
-import UserAnimation from "@/components/UI/UserAnimation";
+import UserAnimation from "@/components/Layout/UserAnimation";
 import { DarkButton } from "@/components/UI/DarkButton";
 import { useForm } from "react-hook-form";
 import { LoginValidations } from "@/utils/forms/validations";

@@ -8,9 +8,10 @@ import {
   MenuItem,
   SelectChangeEvent,
   OutlinedInput,
-  InputAdornment
+  InputAdornment,
+  Button
 } from '@mui/material';
-import ProductCard from './Card';
+import ProductCard from '../../UI/Card';
 
 
 
@@ -39,7 +40,7 @@ const productData = [
     description: 'This is the description of Product 3.',
     image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
     price: 1900,
-    rating: 4.9,
+    rating: 4.1,
     ratingAmount: 2339,
   },
 ];
@@ -114,8 +115,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ obj }) => {
 
 function Catalog() {
   return (
-    <Container>
-      <div className="flex-start text-black gap-2">
+    <Container sx={{mt:1}}>
+      <div className="flex-start text-black gap-2 ">
         <Typography variant="h2">Женская одежда</Typography>
         <p>10000+ товаров</p>
       </div>
@@ -149,6 +150,7 @@ function Catalog() {
           />
         ))}
       </div>
+      <Button variant='contained' className='bg-info block my-3 mx-auto px-16 py-4 rounded-lg' >Еще</Button>
     </Container>
   );
 }
