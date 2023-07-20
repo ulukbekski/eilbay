@@ -22,8 +22,11 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
-      "@components/elements*": ["components/*"],
+      "@elements*": ["components/elements/*"],
+      "@UI/*":["components/UI/*"],
+      "@Layout/*":["components/Layout/*"],
       "@assets/*": ["assets/*"],
+      "@icons/*": ["assets/icons/*"],
       "@styles/*": ["styles/*"],
       "@store/*": ["store/*"],
     }

@@ -112,15 +112,13 @@ export default function HeroCarousel() {
 
 function CarouselItem(props: { item: ItemProps }) {
   return (
-    
       <Paper sx={{height:'400px', width:"100%"}}>
         <Image 
           className='w-full h-full object-cover object-top rounded-xl'
           src={props.item.img}
           width={800}
           alt={props.item.name} />
-        </Paper>
-   
+      </Paper>
   );
 }
 
