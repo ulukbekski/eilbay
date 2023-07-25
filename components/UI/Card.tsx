@@ -17,7 +17,7 @@ interface ProductCardProps {
   id: number;
   title: string;
   description: string;
-  image: string;
+  thumbnail: string;
   price: number;
   rating: number;
   ratingAmount: number;
@@ -26,7 +26,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
   title,
-  image,
+  thumbnail,
   price,
   rating,
   ratingAmount,
@@ -38,15 +38,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Card sx={{ width: "211px", height: "310px", position: "relative" }}>
-      <CardMedia component="img" height="200" image={image} alt={title} />
+      <CardMedia component="img" height="200" image={thumbnail} alt={title} />
       <CardContent>
         <Link className='' href={`/${id}`}>
           {title}
         </Link>
-        <Typography variant="h6" color="primary" gutterBottom>
+        <Typography variant="h6" color="primary" sx={{position: "absolute", bottom: 30}} gutterBottom>
           {price}
         </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1, position: "absolute", bottom:10 }}>
           <Rating value={rating} precision={0.5} readOnly />
           <Typography variant="body2" color="text.secondary">
             {ratingAmount}
@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           right: 8,
           color: isFavorite ? "red" : "",
         }}
-        onClick={() => handleToggleFavorites({ id, title, price, image })}
+        onClick={() => handleToggleFavorites({ id, title, price, thumbnail })}
       >
         <FavoriteIcon />
       </IconButton>

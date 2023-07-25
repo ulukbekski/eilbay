@@ -29,6 +29,7 @@
       "@icons/*": ["assets/icons/*"],
       "@styles/*": ["styles/*"],
       "@store/*": ["store/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": [

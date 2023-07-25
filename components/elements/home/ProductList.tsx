@@ -12,38 +12,9 @@ import {
   Button
 } from '@mui/material';
 import ProductCard from '../../UI/Card';
+import { useProducts } from '@/hooks/useProducts';
 
 
-
-const productData = [
-  {
-    id: 1,
-    title: 'Компьютерные очки Xiaomi MI computer',
-    description: 'This is the description of Product 1.',
-    image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
-    price: 1900,
-    rating: 4.9,
-    ratingAmount: 2339,
-  },
-  {
-    id: 2,
-    title: 'Компьютерные очки Xiaomi MI computerd',
-    description: 'This is the description of Product 2.',
-    image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
-    price: 1900,
-    rating: 4.9,
-    ratingAmount: 2339,
-  },
-  {
-    id: 3,
-    title: 'Product 3',
-    description: 'This is the description of Product 3.',
-    image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
-    price: 1900,
-    rating: 4.1,
-    ratingAmount: 2339,
-  },
-];
 
 interface SelectDataItem {
   id: number;
@@ -84,12 +55,14 @@ interface CustomSelectProps {
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({ obj }) => {
-  const [age, setAge] = React.useState<string>(obj.defaultValue);
 
+
+  const [age, setAge] = React.useState<string>(obj.defaultValue);
   const handleChange = (event: SelectChangeEvent<string>) => {
     setAge(event.target.value as string);
   };
 
+  
   return (
     <>
       <FormControl key={'select' + obj.id} sx={{ width: "175px" }}>
@@ -114,6 +87,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ obj }) => {
 };
 
 function Catalog() {
+  const products = useProducts();
+
   return (
     <Container sx={{mt:1}}>
       <div className="flex-start text-black gap-2 ">
@@ -142,7 +117,7 @@ function Catalog() {
         </FormControl>
       </div>
       <div className=' flex-center flex-wrap  gap-[22px] nowrap mt-[34px]'>
-        {productData.map((product) => (
+        {products.map((product) => (
           <ProductCard
             key={product.id}
             {...product}

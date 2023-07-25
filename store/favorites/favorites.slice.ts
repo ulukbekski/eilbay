@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface FavoriteItem {
   id: number;
-  // Add other properties of the item
+
 }
 
 interface FavoritesState extends Array<FavoriteItem> {}
@@ -23,6 +23,7 @@ export const favoritesSlice = createSlice({
       } else {
         state.push(payload);
       }
+      
     },
   },
 });

@@ -1,9 +1,11 @@
 import axios from "axios";
 import { CreateUserDto , LoginDto, ResponseUser} from "./types";
+import { fetchProductsFailure, fetchProductsStart, fetchProductsSuccess } from "@/store/products/products.slice";
+import { Product } from "@/models";
 
 
 const instance = axios.create({
-    baseURL:"http://localhost:7777/"
+    baseURL:""
 });
 
 
@@ -17,3 +19,20 @@ export const userApi = {
         return data;
     }
 }
+
+
+
+  
+
+
+export const fetchProducts = () => async (dispatch:any) => {
+    dispatch(fetchProductsStart());
+    try {
+      const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
+      const products = response.data;
+      dispatch(fetchProductsSuccess(products));
+    } catch (error:any) {
+      const errorMessage = error.message;
+      dispatch(fetchProductsFailure(errorMessage));
+    }
+  };
