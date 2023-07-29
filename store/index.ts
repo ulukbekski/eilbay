@@ -3,14 +3,14 @@ import {reducer as favoritesReducer} from './favorites/favorites.slice'
 // import { fetchProductsStart, fetchProductsSuccess, fetchProductsFailure } from './products/products.slice'
 import productSliceReducer from './products/products.slice'
 
-// const reducers = combineReducers({
-//     favorites:favoritesReducer,
-// })
+const reducers = combineReducers({
+    favorites:favoritesReducer,
+    products : productSliceReducer,
+})
 
 export const store  = configureStore({
     reducer: {
-        products : productSliceReducer,
-        favorites : favoritesReducer
+        reducers 
     },
     devTools: true
 })

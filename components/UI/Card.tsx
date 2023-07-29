@@ -12,21 +12,14 @@ import {
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useActions } from "@/hooks/useAction";
 import { useFavorites } from "@/hooks/useFavorites";
+import { ProductCardProps } from "@/models";
 
-interface ProductCardProps {
-  id: number;
-  title: string;
-  description: string;
-  thumbnail: string;
-  price: number;
-  rating: number;
-  ratingAmount: number;
-}
+
 
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
-  title,
-  thumbnail,
+  name,
+  main_image,
   price,
   rating,
   ratingAmount,
@@ -38,10 +31,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Card sx={{ width: "211px", height: "310px", position: "relative" }}>
-      <CardMedia component="img" height="200" image={thumbnail} alt={title} />
+      <CardMedia component="img" height="200" image={main_image} alt={name} />
       <CardContent>
         <Link className='' href={`/${id}`}>
-          {title}
+          {name}
         </Link>
         <Typography variant="h6" color="primary" sx={{position: "absolute", bottom: 30}} gutterBottom>
           {price}
@@ -62,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           right: 8,
           color: isFavorite ? "red" : "",
         }}
-        onClick={() => handleToggleFavorites({ id, title, price, thumbnail })}
+        onClick={() => handleToggleFavorites({ id, name, price, main_image })}
       >
         <FavoriteIcon />
       </IconButton>

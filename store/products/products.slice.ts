@@ -11,38 +11,65 @@ const initialState: ProductState = {
   products: [
     {
       id: 1,
-      title: 'Компьютерные очки Xiaomi MI computer',
+      name: 'Компьютерные очки Xiaomi',
       description: 'This is the description of Product 1.',
-      thumbnail: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
+      main_image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
       price: 1900,
-      category:"",
+      category: {
+        id: 1,
+        name: '',
+        slug: ''
+      },
+      sale: false,
+      sale_price: null,
       rating: 4.9,
       ratingAmount: 2339,
-      images:["https://i.pinimg.com/736x/9f/f4/b2/9ff4b2efdb746432eb1b70be5e518823.jpg",'https://i.pinimg.com/736x/c4/56/0a/c4560acbcf83ede9cad96ffcc36c6ae3.jpg']
+      media: [{
+        id: 1,
+        image: "https://i.pinimg.com/736x/9f/f4/b2/9ff4b2efdb746432eb1b70be5e518823.jpg",
+        product: 1
+      }
+      ,{
+          id:2,
+          image:'https://i.pinimg.com/736x/c4/56/0a/c4560acbcf83ede9cad96ffcc36c6ae3.jpg',
+          product:1
+        }
+      ],
+      owner: "Li-ning",
+      sub_category: null,
+      artikul: ""
     },
     {
       id: 2,
-      title: 'Компьютерные очки Xiaomi MI computerd',
+      name: 'Компьютерные очки Xiaomi 2',
       description: 'This is the description of Product 2.',
-      thumbnail: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
-      price: 1900,
-      category:"",
-      rating: 4.9,
-      ratingAmount: 2339,
-      images:["https://i.pinimg.com/736x/9f/f4/b2/9ff4b2efdb746432eb1b70be5e518823.jpg",'https://i.pinimg.com/736x/c4/56/0a/c4560acbcf83ede9cad96ffcc36c6ae3.jpg']
-      
+      main_image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
+      price: 1901,
+      category: {
+        id: 1,
+        name: '',
+        slug: ''
+      },
+      sale: false,
+      sale_price: null,
+      rating: 4.2,
+      ratingAmount: 2319,
+      media: [{
+        id: 1,
+        image: "https://i.pinimg.com/736x/9f/f4/b2/9ff4b2efdb746432eb1b70be5e518823.jpg",
+        product: 2
+      }
+      ,{
+          id:2,
+          image:'https://i.pinimg.com/736x/c4/56/0a/c4560acbcf83ede9cad96ffcc36c6ae3.jpg',
+          product:2
+        }
+      ],
+      owner: "Li-ning",
+      sub_category: null,
+      artikul: ""
     },
-    {
-      id: 3,
-      title: 'Product 3',
-      description: 'This is the description of Product 3.',
-      thumbnail: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
-      price: 1900,
-      category:"",
-      rating: 4.1,
-      ratingAmount: 2339,
-      images:["https://i.pinimg.com/736x/9f/f4/b2/9ff4b2efdb746432eb1b70be5e518823.jpg",'https://i.pinimg.com/736x/c4/56/0a/c4560acbcf83ede9cad96ffcc36c6ae3.jpg']
-    }
+   
   ],
   loading: false,
   error: null,
