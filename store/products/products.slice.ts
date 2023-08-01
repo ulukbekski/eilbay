@@ -10,7 +10,7 @@ interface ProductState {
 const initialState: ProductState = {
   products: [
     {
-      id: 1,
+      id: 1999,
       name: 'Компьютерные очки Xiaomi',
       description: 'This is the description of Product 1.',
       main_image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
@@ -40,7 +40,7 @@ const initialState: ProductState = {
       artikul: ""
     },
     {
-      id: 2,
+      id: 2000,
       name: 'Компьютерные очки Xiaomi 2',
       description: 'This is the description of Product 2.',
       main_image: 'https://img.freepik.com/free-photo/beauty-portrait-young-brunette-woman-with-evening-makeup-perfect-clean-skin-sexy-model-with-long-hair-posing-studio-isolated-blue-dress_158538-25924.jpg',
@@ -85,8 +85,8 @@ const productSlice = createSlice({
     },
     fetchProductsSuccess(state, action: PayloadAction<Product[]>) {
       state.loading = false;
-      state.products = action.payload;
-      console.log(state.products)
+      state.products = [...initialState.products,...action.payload];
+      
     },
     fetchProductsFailure(state, action: PayloadAction<string>) {
       state.loading = false;

@@ -14,6 +14,7 @@ import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { Card, Divider, Rating, Button } from "@mui/material";
+import ProductList from "@/components/elements/home/ProductList";
 
 export default function ProductProfile() {
   const pathnameString = usePathname();
@@ -248,6 +249,7 @@ export default function ProductProfile() {
             <Button variant="contained" color="info" fullWidth  className="bg-info rounded-xl py-3.5">Связаться</Button>
           </Card>
         </Box>
+        <ProductList/>
       </div>
     );
   }

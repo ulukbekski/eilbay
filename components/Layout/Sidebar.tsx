@@ -146,14 +146,14 @@ const DrawerContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== 'isOpen',
 })<{ isOpen: boolean }>`
   height: 100%;
-  transition: 1s;
-  width: 320px;
-  position:absolute;
+  transition: .5s;
+  overflow: hidden;
+  width: 250px;
+  position: absolute;
   left:0;
   top:0;
-  z-index:2000;
-  background-color:white;
-  overflow:hidden;
+  z-index: 2000;
+  background-color: white;
 
   ${({ isOpen }) =>
     !isOpen &&
@@ -163,9 +163,7 @@ const DrawerContainer = styled.div.withConfig({
       overflow: hidden;
     `}
 
-      @media (min-width:1200px) {
-        display:block;
-      }
+     
 `;
 
 

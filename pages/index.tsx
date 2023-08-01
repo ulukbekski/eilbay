@@ -1,17 +1,19 @@
 import React from "react";
 import HeroCarousel from "@/components/elements/home/HeroCarousel";
 import LogoCardList from "@/components/elements/home/LogoCardList";
-import Catalog from "@/components/elements/home/ProductList";
+import ProductList from "@/components/elements/home/ProductList";
 import EilbayFilials from "@/components/elements/home/EilbayFilials";
+import ProductListFilters from "@/components/UI/ProductListFilters";
 
 
 export default function Home() {
   return (
     <>
-      <HeroCarousel />
+      {/* <HeroCarousel />
       <LogoCardList />
-      <Catalog />
-      <EilbayFilials />
+      <ProductListFilters/> */}
+      <ProductList />
+      {/* <EilbayFilials /> */}
     </>
   );
 }

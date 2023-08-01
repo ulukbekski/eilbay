@@ -4,7 +4,7 @@ import {reducer as favoritesReducer} from './favorites/favorites.slice'
 import productSliceReducer from './products/products.slice'
 
 const reducers = combineReducers({
-    favorites:favoritesReducer,
+    favorites :favoritesReducer,
     products : productSliceReducer,
 })
 

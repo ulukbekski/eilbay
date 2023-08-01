@@ -48,4 +48,6 @@ export interface ProductCardProps {
     price: number;
     rating: number;
     ratingAmount: number;
+    sale:boolean;
+    sale_price: number | null;
   }

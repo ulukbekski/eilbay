@@ -42,15 +42,12 @@
               src={category.categoryIcon}
               alt= {category.name}
               height={24}/>
-              <Typography >
-                
-                {category.name}
-              </Typography>
+              <Typography fontSize={16} marginLeft="10px" > {category.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <div>
                 {category.subcategories.map((subcategory, index) => (
-                  <Typography key={index} >
+                  <Typography key={index} fontSize={14} >
                     {subcategory}
                   </Typography>
                 ))}
@@ -63,7 +60,7 @@
   };
 
   const AccordionContainer = styled.div`
-    width: 100%;
+    width: 250px;
   `;
 
   const StyledAccordion = styled(Accordion)`

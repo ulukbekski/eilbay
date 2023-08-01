@@ -14,7 +14,15 @@ import { useActions } from "@/hooks/useAction";
 import { useFavorites } from "@/hooks/useFavorites";
 import { ProductCardProps } from "@/models";
 
-
+interface FavoriteProduct {
+  id:number;
+  main_image:string;
+  name:string;
+  description: string|null;
+  price:number;
+  sale:boolean;
+  sale_price: number | null;
+}
 
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
@@ -23,23 +31,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
   rating,
   ratingAmount,
+  description,
+  sale,
+  sale_price,
 }) => {
   const favorites = useFavorites();
   const isFavorite = favorites.some((r) => r.id === id);
   const { toggleFavorites } = useActions();
-  const handleToggleFavorites = (item: any) => toggleFavorites(item);
+  const handleToggleFavorites = (item: FavoriteProduct ) => toggleFavorites(item);
 
   return (
     <Card sx={{ width: "211px", height: "310px", position: "relative" }}>
-      <CardMedia component="img" height="200" image={main_image} alt={name} />
-      <CardContent>
-        <Link className='' href={`/${id}`}>
+      <CardMedia component="img" height="211" className="max-h-[211px] min-h-[211px]" image={main_image} alt={name} />
+      <CardContent sx={{position:"relative", p:"10px", height:"100px" }}>
+        <Link className='text-[14px] p-0' href={`/${id}`}>
           {name}
         </Link>
-        <Typography variant="h6" color="primary" sx={{position: "absolute", bottom: 30}} gutterBottom>
+        <Typography variant="h6" color="primary" sx={{position: "absolute", bottom: 20, fontSize:20}} gutterBottom>
           {price}
         </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1, position: "absolute", bottom:10 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1, position: "absolute", bottom:5 }}>
           <Rating value={rating} precision={0.5} readOnly />
           <Typography variant="body2" color="text.secondary">
             {ratingAmount}
@@ -55,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           right: 8,
           color: isFavorite ? "red" : "",
         }}
-        onClick={() => handleToggleFavorites({ id, name, price, main_image })}
+        onClick={() => handleToggleFavorites({ id, name, price, main_image , sale, sale_price, description})}
       >
         <FavoriteIcon />
       </IconButton>

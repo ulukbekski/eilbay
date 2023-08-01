@@ -1,8 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface FavoriteItem {
-  id: number;
-
+  id:number;
+  main_image:string;
+  name:string;
+  description: string|null;
+  price:number;
+  sale:boolean;
+  sale_price: number | null;
 }
 
 interface FavoritesState extends Array<FavoriteItem> {}
@@ -14,10 +19,12 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     toggleFavorites: (state, { payload }: PayloadAction<FavoriteItem>) => {
+      
       const isExist = state.some((r) => r.id === payload.id);
       if (isExist) {
         const index = state.findIndex(item => item.id === payload.id)
         if(index !== -1){
+            
             state.splice(index,1)
         }
       } else {

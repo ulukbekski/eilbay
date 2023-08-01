@@ -48,15 +48,15 @@ function Header({isOpen, toggleSidebar}:SidebarProps) {
         <LanguageSelect/>
         
         <nav className='gap-[4px] flex p-2'  >
-          <Button sx={{ color:'white',p:0, display:{xs:"none",md:'block'}}}>
+          <Button sx={{ color:'white',p:0, display:{xs:"none",md:'block'}}} href={favorites.length?"/favorites":""}>
+            {favorites.length}
             <HiOutlineHeart className='text-xl m-auto'/>
-            {/* {favorites.length} */}
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Избранное</Typography>
           </Button>
-          <Button sx={{display:"block",p:0, color:'white'}}>
+          {/* <Button sx={{display:"block",p:0, color:'white'}}>
             <BiChat className='text-4xl md:text-xl m-auto'/>
             <Typography  sx={{fontSize:"14px",textTransform:'none',display:{xs:"none",md:'block'}}}>Чат</Typography>
-          </Button>
+          </Button> */}
           <Button sx={{display:{xs:"none",md:'block'},p:0, color:'white'}} href={true? "/user/profile/id": "/user/login"}>
             <FaRegUser className='text-xl m-auto'/>
             <Typography sx={{fontSize:"14px",textTransform:'none'}}>Профиль</Typography>
