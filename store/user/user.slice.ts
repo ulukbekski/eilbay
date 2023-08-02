@@ -8,7 +8,7 @@ const initialState: UserProfileProps = {
   // email: 'linkasdg@gmail.com',
   bio: "Hello world my javascript leuanana",
   isLoggedIn: false,
-  avatar:null,
+  avatar: undefined,
   rating: 4.3,
   country: {name:"china",code:"ch"}
 };
