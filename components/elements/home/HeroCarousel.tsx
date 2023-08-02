@@ -2,7 +2,8 @@ import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper, Container} from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
-import imgage from 'assets/HeroImage.png';
+import imgage from 'assets/HeroImage.jpg';
+import imgage1 from 'assets/HeroImage1.png';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { relative } from 'path';
 
@@ -24,7 +25,7 @@ const items: ItemProps[] = [
   {
     name: "Random Name #2",
     description: "Hello World!",
-    img: imgage
+    img: imgage1
   },
   {
     name: "Random Name #2",
