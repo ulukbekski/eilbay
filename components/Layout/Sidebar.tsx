@@ -140,6 +140,7 @@ subCategorieLinks:["#","#","#"],
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  className: string;
 }
 
 const DrawerContainer = styled.div.withConfig({
@@ -169,9 +170,9 @@ const DrawerContainer = styled.div.withConfig({
 
 const DrawerPaper = styled.div``;
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,className }) => {
   return (
-      <DrawerContainer isOpen={isOpen}>
+      <DrawerContainer isOpen={isOpen} className={className}>
         <DrawerPaper>
           <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
             <IconButton onClick={onClose}>

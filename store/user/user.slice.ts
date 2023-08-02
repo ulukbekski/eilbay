@@ -1,21 +1,30 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserProfileProps } from '@/models';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface UserData {
-  id: number;
-  name: string;
-}
 
-interface UserState extends Array<UserData> {}
 
-const initialState: UserState = [];
+const initialState: UserProfileProps = {
+  fullName: 'Li-ning',
+  // email: 'linkasdg@gmail.com',
+  bio: "Hello world my javascript leuanana",
+  isLoggedIn: false,
+  avatar:null,
+  rating: 4.3,
+  country: {name:"china",code:"ch"}
+};
 
-export const userSlice = createSlice({
-    name: 'user',
-    initialState,
-    reducers: {
-        addUser: (state, { payload }: PayloadAction<UserData>) => {
-        const isExist = state.some((r) => r.id === payload.id);
-        
-      },
+const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    setUser(state, action: PayloadAction<UserProfileProps>) {
+      return action.payload;
     },
-  });
+    setLoggedIn(state, action: PayloadAction<boolean>) {
+      state.isLoggedIn = action.payload;
+    },
+  },
+});
+
+export const { setUser, setLoggedIn } = userSlice.actions;
+export default userSlice.reducer;

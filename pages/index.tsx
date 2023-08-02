@@ -9,11 +9,11 @@ import ProductListFilters from "@/components/UI/ProductListFilters";
 export default function Home() {
   return (
     <>
-      {/* <HeroCarousel />
+      <HeroCarousel />
       <LogoCardList />
-      <ProductListFilters/> */}
+      <ProductListFilters/>
       <ProductList />
-      {/* <EilbayFilials /> */}
+      <EilbayFilials />
     </>
   );
 }

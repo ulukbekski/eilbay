@@ -1,11 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {reducer as favoritesReducer} from './favorites/favorites.slice'
-// import { fetchProductsStart, fetchProductsSuccess, fetchProductsFailure } from './products/products.slice'
 import productSliceReducer from './products/products.slice'
+import userSlice from "./user/user.slice";
 
 const reducers = combineReducers({
     favorites :favoritesReducer,
     products : productSliceReducer,
+    user: userSlice
 })
 
 export const store  = configureStore({

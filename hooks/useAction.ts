@@ -3,12 +3,15 @@ import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { actions as favoritesActions } from "@/store/favorites/favorites.slice";
 import { fetchProductsStart, fetchProductsSuccess, fetchProductsFailure } from "@/store/products/products.slice";
+import { setLoggedIn, setUser } from "@/store/user/user.slice";
 
 const rootActions = {
   ...favoritesActions,
   fetchProductsStart,
   fetchProductsSuccess,
   fetchProductsFailure,
+  setUser,
+  setLoggedIn
 };
 
 export const useActions = () => {
