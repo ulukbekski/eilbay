@@ -5,26 +5,35 @@ import { PiHouse, PiHouseFill } from "react-icons/pi";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { BsPlusSquare, BsPlusSquareFill } from "react-icons/bs";
+import Link from 'next/link';
 
 const icons = [
-  { label: "Home", iconInactive: <PiHouse />, iconActive: <PiHouseFill /> },
+  { 
+    label: "Home",
+    href: "/",
+    iconInactive: <PiHouse />,
+    iconActive: <PiHouseFill /> },
   {
     label: "Search",
+    href: "/search",
     iconInactive: <RiSearchLine />,
     iconActive: <RiSearchFill />,
   },
   {
     label: "Add",
+    href: "/add",
     iconInactive: <BsPlusSquare />,
     iconActive: <BsPlusSquareFill />,
   },
   {
     label: "Favorites",
+    href: "/favorites",
     iconInactive: <RxHeart />,
     iconActive: <RxHeartFilled />,
   },
   {
     label: "Profile",
+    href: "/user/profile",
     iconInactive: <IoPersonOutline />,
     iconActive: <IoPerson />,
   },
@@ -73,13 +82,15 @@ export default function MobileFooter() {
       }}
     >
       {icons.map((icon, index) => (
-        <IconBtn
-          key={index}
-          index={index}
-          label={icon.label}
-          icon={active[index] ? icon.iconActive : icon.iconInactive}
-          
-        />
+        <Link key={index} href={icon.href} >
+          <IconBtn
+            
+            index={index}
+            label={icon.label}
+            icon={active[index] ? icon.iconActive : icon.iconInactive}
+            
+          />
+        </Link>
       ))}
     </BottomNavigation>
   );

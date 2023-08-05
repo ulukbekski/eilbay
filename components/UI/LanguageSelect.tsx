@@ -7,8 +7,7 @@ import Box from '@mui/material/Box';
 
 const languageOptions = [
   { value: 'en', label: 'Eng' },
-  { value: 'ru', label: 'Rus' },
-  { value: 'kg', label: 'Kgz' },
+  { value: 'ru', label: 'Rus' }
 ];
 
 const LanguageSelect: React.FC = () => {

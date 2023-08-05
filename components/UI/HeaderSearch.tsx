@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { TextField, Box, InputAdornment,styled, IconButton } from "@mui/material";
+import { TextField, Box, InputAdornment, IconButton } from "@mui/material";
 import {GoSearch} from 'react-icons/go'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import Link from 'next/link'
 
 interface SearchProps {
   onSearch: (query: string) => void;
@@ -73,12 +73,14 @@ const Search: React.FC<SearchProps> = ({ onSearch}) => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end" onClick={handleSearch} sx={{cursor:"pointer"}}>
+              <Link href="/search">
               <IconButton sx={{
                 borderRadius:0,
                 width:'50px'
               }}>
                 <GoSearch className="text-2xl"/>
               </IconButton>
+              </Link>
             </InputAdornment>
           ),
         }}

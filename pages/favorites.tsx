@@ -5,17 +5,19 @@ import Image from "next/image";
 
 export default function Favorites() {
   const favorites = useFavorites();
-  console.log(favorites);
+
   return (
     <Container >
       <Typography variant="body1" color="initial" px={4}>
         Избранное
       </Typography>
-      {favorites?.map((obj) => (
+      
+      {favorites.length  ? 
+      (favorites.map((obj) => (
         <Box display="flex" px={4} py={2} gap="20px" mb={'22px'} sx={{border:"1px solid #e1e1e1"}}>
          
           <Image
-            className="object-cover rounded-[7px] min-w-[260px] min-h-[300px]"
+            className="object-cover rounded-[7px] w-[150px] h-[200px] md:min-w-[260px] md:min-h-[300px] "
             src={obj.main_image}
             alt={obj.name}
             width={260}
@@ -23,19 +25,22 @@ export default function Favorites() {
           ></Image>
           <Box>
             <Box display="flex" alignItems={'center'}>
-              <Typography variant="body1" fontSize={28} fontWeight={600} color="initial">
+              <Typography variant="body1" sx={{fontSize:{xs:14,sm:16,md:24}}} fontWeight={600} color="initial">
                 {obj.price} <u>C</u> 
               </Typography>
-              <Typography variant="body1" fontSize="18px" className="text-[#909090]">
+              <Typography variant="body1" sx={{fontSize:{xs:10,sm:12,md:18}}} className="text-[#909090]">
                 {obj.sale_price}
               </Typography> 
             </Box>
-            <Typography variant="body1" fontSize={24} color="initial">
+            <Typography variant="body1"  sx={{fontSize:{xs:14,sm:16,md:24}}} color="initial">
               {obj.description}
             </Typography>
           </Box>
         </Box>
-      ))}
+      )))
+      :
+     ( <Typography textAlign="center" className="text-black">Тут пусто. <br /> Вы пока еще не добавили товары в избранное!</Typography>)
+      }
     </Container>
   );
 }

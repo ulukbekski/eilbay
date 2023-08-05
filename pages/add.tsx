@@ -10,6 +10,7 @@ import {
 // import { BiPlus } from "react-icons/bi";
 import CategorySelect from "@/components/UI/Category";
 import { Accept } from "react-dropzone";
+import { BiPlus } from "react-icons/bi";
 
 interface Props {
   maxFiles: number;
@@ -30,6 +31,8 @@ const ImageWrapper = ({ file }: { file: File }) => {
         height: 125,
         borderRadius: 3,
         overflow: "hidden",
+        margin:0.5,
+        boxShadow:3
       }}
     >
       <img
@@ -45,13 +48,10 @@ const Add: React.FC<Props> = ({ maxFiles = 10 }) => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
 
-  const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      setFiles(acceptedFiles);
-    },
-    [setFiles]
-  );
-
+  const onDrop = (acceptedFiles: File[]) => {
+      setFiles([...files, ...acceptedFiles])
+    }
+    
   const onCancel = () => {
     setFiles([]);
     setUploading(false);
@@ -61,7 +61,7 @@ const Add: React.FC<Props> = ({ maxFiles = 10 }) => {
     setUploading(true);
     try {
       // отправляем файлы на сервер
-     ////// // await uploadFiles(files);
+      // await uploadFiles(files);
       // очищаем список файлов
       setFiles([]);
     } catch (error) {
@@ -82,39 +82,61 @@ const Add: React.FC<Props> = ({ maxFiles = 10 }) => {
   });
 
   return (
-    <Box sx={{ maxWidth: 435, margin: "auto" }}>
+    <Box sx={{ maxWidth: 435, margin: "auto",p:2}}>
       <Typography variant="h6" color="black" sx={{ mb: 1 }}>
         Фотографии ({files.length}/{maxFiles})
       </Typography>
+      <Box display='flex'>
+
       <Box
         {...getRootProps()}
         sx={{
-          border: "2px dashed grey",
+          border: "1px solid lightgrey",
           borderRadius: "10px",
           padding: "20px",
           textAlign: "center",
           cursor: "pointer",
-          color: "black"
+          color: "black",
+          width:"270px",
+          height: "270px",
+          margin:"5px"
         }}
       >
         <input {...getInputProps()} />
-        {isDragActive && !isDragReject ? (
-          <p>Перетащите файл сюда</p>
-        ) : (
-          <p>
-            Перетащите изображение сюда или нажмите, чтобы выбрать файл
-          </p>
-        )}
-        {isDragReject && <p>Файл не является изображением</p>}
+        {isDragActive && !isDragReject ? 
+        <>
+        <p>Перетащите файл сюда</p><BiPlus className="block m-auto text-6xl"/>
+        </>
+          : 
+          <><p>Перетащите изображение сюда или нажмите, чтобы выбрать файл </p><BiPlus className="block m-auto text-6xl"/></>
+          }
+        {isDragReject && <p>Возможно файл не является изображением</p>
+         }
+      </Box>
+      {files.length &&
+      <ImageWrapper key={files[0]?.name} file={files[0]} />
+      }
+
       </Box>
       <Box sx={{ display: "flex", flexWrap: "wrap", mt: 2  }}>
-        {files.map((file) => (
-          <ImageWrapper key={file.name} file={file} />
-        ))}
+        {files.filter((obj,id) => id > 0)
+        .map((file) => <ImageWrapper key={file.name} file={file} />
+          
+        
+          
+        )}
       </Box>
       <Box sx={{  mt: 2}}>
 
         <CategorySelect 
+        label="Выберите категория"
+        categories={[]} 
+        selectedCategory={""} 
+        onCategoryChange={function (category: string): void {
+          throw new Error("Function not implemented.");
+        } } />
+        <CategorySelect 
+        label="Выберите подкатегория"
         categories={[]} 
         selectedCategory={""} 
         onCategoryChange={function (category: string): void {
@@ -122,10 +144,10 @@ const Add: React.FC<Props> = ({ maxFiles = 10 }) => {
         } } />
 
         <TextField
-          label="Название"
+          label="Наименование"
           variant="outlined"
           fullWidth
-          margin="dense"
+          
         />
          <TextField
           name="description"
@@ -154,6 +176,7 @@ const Add: React.FC<Props> = ({ maxFiles = 10 }) => {
             <Button
               variant="contained"
               color="primary"
+              className="bg-blue-400"
               onClick={onSubmit}
               disabled={files.length === 0}
               sx={{ mr: 1 }}

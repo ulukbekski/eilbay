@@ -140,48 +140,27 @@ subCategorieLinks:["#","#","#"],
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  className: string;
 }
 
-const DrawerContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})<{ isOpen: boolean }>`
-  height: 100%;
-  transition: .5s;
-  overflow: hidden;
-  width: 250px;
-  position: absolute;
-  left:0;
-  top:0;
-  z-index: 2000;
-  background-color: white;
-
-  ${({ isOpen }) =>
-    !isOpen &&
-    css`
-      width: 0;
-      transition: 0.7s;
-      overflow: hidden;
-    `}
-
-     
-`;
 
 
-const DrawerPaper = styled.div``;
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,className }) => {
+
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
-      <DrawerContainer isOpen={isOpen} className={className}>
-        <DrawerPaper>
+    <>
+      <div  className={`overflow-hidden absolute z-50 bg-[white] ${isOpen ? "w-[250px]":"w-0"}`}>
+        <div>
           <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
             <IconButton onClick={onClose}>
               <CloseIcon />
             </IconButton>
           </div>
           <AccordionComponent categories={categories} />
-        </DrawerPaper>
-      </DrawerContainer>
+        </div>
+      </div>
+    </>
     
 );
 };

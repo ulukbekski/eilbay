@@ -50,9 +50,9 @@ interface SelectDataItem {
 const SelectData: SelectDataItem[] = [
     {
       id: 1,
-      label: 'Город',
+      label: 'Страны',
       defaultValue: 'Все',
-      MenuItems: ["Все", 'Ош', 'Бишкек', 'Баткен'],
+      MenuItems: ["Все", 'Кыргызстан', 'Казакстан', 'Китай'],
     },
     {
       id: 2,

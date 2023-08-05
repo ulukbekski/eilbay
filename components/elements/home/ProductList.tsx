@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from "react";
 import { Container, Button } from "@mui/material";
-import ProductCard from "../../UI/ProductCard";
+import ProductCard from "./ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 
-import { fetchProductsStart, fetchProductsSuccess } from "@/store/products/products.slice";
+// import { fetchProductsStart, fetchProductsSuccess } from "@/store/products/products.slice";
 import { useActions } from "@/hooks/useAction";
 import axios from "axios";
 
