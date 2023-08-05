@@ -22,7 +22,7 @@ function UserAnimation() {
       </div>
 
       <Typography variant='h2' sx={{fontSize:{md:24,lg:36}}}>
-        Eilibay
+        Eilbay
       </Typography>
       <Image
         src={BigImg}

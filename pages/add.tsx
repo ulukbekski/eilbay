@@ -129,14 +129,14 @@ const Add: React.FC<Props> = ({ maxFiles = 10 }) => {
       <Box sx={{  mt: 2}}>
 
         <CategorySelect 
-        label="Выберите категория"
+        label="Выберите категорию"
         categories={[]} 
         selectedCategory={""} 
         onCategoryChange={function (category: string): void {
           throw new Error("Function not implemented.");
         } } />
         <CategorySelect 
-        label="Выберите подкатегория"
+        label="Выберите подкатегорию"
         categories={[]} 
         selectedCategory={""} 
         onCategoryChange={function (category: string): void {

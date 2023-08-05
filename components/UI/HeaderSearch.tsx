@@ -3,9 +3,10 @@ import { TextField, Box, InputAdornment, IconButton } from "@mui/material";
 import {GoSearch} from 'react-icons/go'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from 'next/link'
+import { useActions } from "@/hooks/useAction";
 
 interface SearchProps {
-  onSearch: (query: string) => void;
+  sx: object;
 }
 
 const theme = createTheme({
@@ -52,16 +53,15 @@ const theme = createTheme({
 
 
 
-const Search: React.FC<SearchProps> = ({ onSearch}) => {
-  const [query, setQuery] = useState("");
-  const handleSearch = () => {
-    onSearch(query);
-  };
+const Search = ({sx}:SearchProps) => {
+  const [query, setQuerys] = useState("");
+  const {setQuery }= useActions()
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuerys(event.target.value);
     setQuery(event.target.value);
   };
   return (
-    <Box alignItems="center" sx={{maxWidth:'500px',width:"100%", display:{xs:"none",md:'block'}}}>
+    <Box alignItems="center" sx={sx}>
       <ThemeProvider theme={theme}>
       <TextField  
         value={query}
@@ -72,7 +72,7 @@ const Search: React.FC<SearchProps> = ({ onSearch}) => {
         sx={{ mr: 1,width:"100%",bgcolor:"#f7f8f900",color:'white',}}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end" onClick={handleSearch} sx={{cursor:"pointer"}}>
+            <InputAdornment position="end"  sx={{cursor:"pointer"}}>
               <Link href="/search">
               <IconButton sx={{
                 borderRadius:0,

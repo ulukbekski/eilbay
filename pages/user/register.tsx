@@ -1,6 +1,7 @@
 import React from "react";
 import UserAnimation from "@/components/Layout/UserAnimation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Typography,
   TextField,
@@ -19,6 +20,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateUserDto } from "@/utils/api/types";
 import { userApi } from "@/utils/api";
 import { setCookie } from "nookies";
+
+
+import whatsapp from '@assets/icons/whatsap.svg'
+import telega from '@assets/icons/telega.png'
+import google from '@assets/icons/google_ic.svg'
 
 function Registration() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -186,7 +192,7 @@ function Registration() {
                   borderRadius: 2,
                 }}
               >
-                W
+                <Image src={whatsapp} alt="" width={30}></Image>
               </Button>
               <Button
                 variant="outlined"
@@ -198,13 +204,13 @@ function Registration() {
                   borderRadius: 2,
                 }}
               >
-                W
+               <Image src={google} alt="" width={30}></Image>
               </Button>
               <Button
                 variant="outlined"
                 sx={{ height: "52px", width: "100%", mt: 2.5, borderRadius: 2 }}
               >
-                W
+               <Image src={telega} alt="" width={30}></Image>
               </Button>
             </Box>
 

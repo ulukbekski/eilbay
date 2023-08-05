@@ -13,10 +13,6 @@ import {
   Button,
 } from "@mui/material";
 
-
-
-
-
 function Footer() {
   return (
     // Desktop Footer
@@ -44,7 +40,7 @@ function Footer() {
               fontSize: { xs: 24, md: 30, lg: 36, xl: 40 },
             }}
           >
-            Eilibay
+            Eilbay
           </Typography>
         </Box>
         <div className="h-full">

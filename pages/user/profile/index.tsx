@@ -1,10 +1,6 @@
 import React from 'react'
 import { Avatar, Box, Grid, Link, Typography, Container } from '@mui/material';
 import { useUser } from '@/hooks/useUser';
-// import FlagIcon from 'flag-icons/react';
-
-
-
 
 const Profile = () => {
   const user = useUser()
@@ -13,8 +9,6 @@ const Profile = () => {
   return (
     <Box sx={{ mb: 4 }} color='initial'>
       <Container>
-
-     
       <Typography variant="h4" align="center" gutterBottom>
         {fullName}
       </Typography>

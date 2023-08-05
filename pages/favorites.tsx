@@ -2,9 +2,11 @@ import React from "react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Container, Typography, Box } from "@mui/material";
 import Image from "next/image";
+import { useSearchValue } from "@/hooks/useSearchValue";
 
 export default function Favorites() {
   const favorites = useFavorites();
+  const searchValue = useSearchValue()
 
   return (
     <Container >
@@ -13,7 +15,8 @@ export default function Favorites() {
       </Typography>
       
       {favorites.length  ? 
-      (favorites.map((obj) => (
+      (favorites.filter(obj => obj.name.toUpperCase().includes(searchValue.query.toUpperCase()))
+      .map((obj) => (
         <Box display="flex" px={4} py={2} gap="20px" mb={'22px'} sx={{border:"1px solid #e1e1e1"}}>
          
           <Image

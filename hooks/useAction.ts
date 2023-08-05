@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { actions as favoritesActions } from "@/store/favorites/favorites.slice";
 import { fetchProductsStart, fetchProductsSuccess, fetchProductsFailure } from "@/store/products/products.slice";
 import { setLoggedIn, setUser } from "@/store/user/user.slice";
+import { setQuery } from "@/store/search/search.slice";
 
 const rootActions = {
   ...favoritesActions,
@@ -11,7 +12,8 @@ const rootActions = {
   fetchProductsSuccess,
   fetchProductsFailure,
   setUser,
-  setLoggedIn
+  setLoggedIn,
+  setQuery
 };
 
 export const useActions = () => {
