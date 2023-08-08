@@ -84,11 +84,9 @@ export default function MobileFooter() {
       {icons.map((icon, index) => (
         <Link key={index} href={icon.href} >
           <IconBtn
-            
             index={index}
             label={icon.label}
             icon={active[index] ? icon.iconActive : icon.iconInactive}
-            
           />
         </Link>
       ))}

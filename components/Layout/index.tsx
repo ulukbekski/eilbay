@@ -18,10 +18,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
     
         <Header isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
-        <main className="flex relative min-h-[100vh]">
+        <main className="flex relative min-h-[100vh] ">
         <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar}/>
-        
-          <div className={`pt-2 w-full`} >
+          <div className={` w-full`} >
             {children}
           </div>
         </main>

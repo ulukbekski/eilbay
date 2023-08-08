@@ -24,8 +24,8 @@ function ProductList() {
   },[])
 
   return (
-    <Container sx={{ mt: 1 }}>
-      <div className=" flex-center flex-wrap  gap-[22px] nowrap mt-[34px]">
+    <Container sx={{ mt: 1 ,p:{xs:0,md:1} }}>
+      <div className=" flex-center flex-wrap gap-[22px] md:gap-[16px] nowrap mt-[34px]">
         {products.filter(obj => obj.name.toUpperCase().includes(searchValue.query.toUpperCase())).map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}

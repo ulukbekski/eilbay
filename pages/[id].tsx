@@ -15,6 +15,9 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { Card, Divider, Rating, Button } from "@mui/material";
 import ProductList from "@/components/elements/home/ProductList";
+import MPD from "@/components/elements/about/MobileProductDetails";
+
+
 
 export default function ProductProfile() {
   const pathnameString = usePathname();
@@ -70,19 +73,22 @@ export default function ProductProfile() {
 
     const allMedia = [main_image, ...medias];
     return (
-      <div className=" text-black m-auto p-8">
-        <Box display="flex" justifyContent="space-between">
+      <div className=" text-black m-auto p-0 md:p-8  relative">
+        <Box display="flex" justifyContent="space-between " sx={{posittion:{xs:"absolute",md:"relative"},background:"transparent  "}}>
           <IconButton
             aria-label=""
-            sx={{ boxShadow: 3, borderRadius: 2 }}
+            sx={{ boxShadow: 3, borderRadius: 2 ,transform:{xs:"scale(0.7)",md:"scale(0.9)"}}}
             onClick={() => router.back()}
           >
             <BsChevronLeft className="text-3xl" />
           </IconButton>
-          <Box>
+          <Typography sx={{display:{xs:"flex",md:"none"},alignItems:"center" ,whiteSpace:"nowrap",maxWidth:"150px", overflow:"hidden"}} variant="body1" fontSize={14} color="black">
+            <b>{owner}</b> / {name}
+          </Typography>  
+          <Box display="flex" alignItems='center'>
             <IconButton
               aria-label=""
-              sx={{ boxShadow: 3, borderRadius: 2, marginRight: 3 }}
+              sx={{ boxShadow: 3, borderRadius: 2, marginRight: 3 ,transform:{xs:"scale(0.7)",md:"scale(0.9)"}}}
               onClick={() =>
                 handleToggleFavorites({ id, name, price, main_image })
               }
@@ -93,12 +99,14 @@ export default function ProductProfile() {
                 <HiOutlineHeart className="text-3xl" />
               )}
             </IconButton>
-            <IconButton aria-label="" sx={{ boxShadow: 3, borderRadius: 2 }}>
+            <IconButton aria-label="" sx={{ boxShadow: 3, borderRadius: 2 ,transform:{xs:"scale(0.7)",md:"scale(0.9)"}}}>
               <HiShare className="text-3xl" />
             </IconButton>
           </Box>
         </Box>
-        <Box marginTop={3}>
+        <MPD medias={[main_image, ...medias]} product={product}/>
+        
+        <Box marginTop={3} sx={{display:{xs:"none",md:"block"}}} >
           <Typography variant="body1" color="initial">
             <b>{owner}</b> / {name}
           </Typography>
@@ -200,7 +208,7 @@ export default function ProductProfile() {
               width: "327px",
               height: "200px",
               borderRadius: 3,
-              px: 4,
+              px: 3.5,
               py: 1.6,
               
             }}
@@ -236,19 +244,19 @@ export default function ProductProfile() {
               </Typography>
             </Box>
             <Box display={"flex"} justifyContent="space-between" mb={2}>
-
-              <Typography variant="body1" color="initial" fontSize={28}> {price} <u>C</u></Typography>
+              <Typography variant="body1" color="initial"  fontWeight='bold' fontSize={20} > {price} <u>C</u></Typography>
               {sale && <span>{sale_price} <u>c</u></span> }
               {isFavorite ? (
                 <FcLike className="text-3xl" />
               ) : (
                 <HiOutlineHeart className="text-3xl" />
               )}
-              
             </Box>
             <Button variant="contained" color="info" fullWidth  className="bg-info rounded-xl py-3.5">Связаться</Button>
           </Card>
         </Box>
+
+
         <ProductList/>
       </div>
     );

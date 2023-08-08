@@ -41,14 +41,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const handleToggleFavorites = (item: FavoriteProduct ) => toggleFavorites(item);
 
   return (
-    <Card sx={{ width: "211px", height: "310px", position: "relative" }}>
-      <CardMedia component="img" height="211" className="max-h-[211px] min-h-[211px]" image={main_image} alt={name} />
+    <Card sx={{ width: {xs:"165px",sm:'180px',md:'211px'}, height: {xs:"255px",sm:'270px',md:'311px'}, position: "relative" }}>
+      <CardMedia component="img" sx={ {width: {xs:"165px",sm:'180px',md:'211px'}, height: {xs:"160px",sm:'180px',md:'211px'}}} 
+      // height="211" className="max-h-[211px] min-h-[211px]"
+       image={main_image} alt={name} />
       <CardContent sx={{position:"relative", p:"10px", height:"100px" }}>
         <Link className='text-[14px] p-0' href={`/${id}`}>
           {name}
         </Link>
-        <Typography variant="h6" color="primary" sx={{position: "absolute", bottom: 20, fontSize:20}} gutterBottom>
-          {price}
+        <Typography variant="h6" color="primary" sx={{position: "absolute", bottom:"25px", fontSize:{xs:14,sm:16,md:18}}} gutterBottom>
+          {price} <u>C</u>
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1, position: "absolute", bottom:5 }}>
           <Rating value={rating} precision={0.5} readOnly />

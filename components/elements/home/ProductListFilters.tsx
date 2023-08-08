@@ -25,9 +25,7 @@ interface CustomSelectProps {
             id="demo-simple-select"
             value={age}
             label={obj.label}
-            onChange={handleChange}
-            
-          >
+            onChange={handleChange}>
             {obj.MenuItems.map((item: string) => (
               <MenuItem sx={{ fontSize: "16px" }} key={item + 'menuItem'} value={item}>
                 {item}

@@ -47,11 +47,11 @@ const items: ItemProps[] = [
 export default function HeroCarousel() {
   return (
 
-<Container sx={{p:4, minHeight:"300px",position:"relative"}}>
+<Container sx={{p:0, minHeight:"300px",position:"relative"}}>
     <Carousel
     sx={{ 
-        borderRadius:"20px", 
-       
+        borderRadius:"20px",
+        pt:2 
         }}
     navButtonsProps={{          
       style: {

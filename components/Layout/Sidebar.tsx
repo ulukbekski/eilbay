@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import CloseIcon from '@mui/icons-material/Close';
-import { IconButton } from '@mui/material';
+
 import AccordionComponent from '@UI/Accordion';
 
 import MensIcon from '@icons/men.svg';
@@ -152,11 +150,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <>
       <div  className={`overflow-hidden absolute z-50 bg-[white] ${isOpen ? "w-[250px]":"w-0"}`}>
         <div>
-          <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
+          {/* <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
             <IconButton onClick={onClose}>
               <CloseIcon />
             </IconButton>
-          </div>
+          </div> */}
           <AccordionComponent categories={categories} />
         </div>
       </div>

@@ -100,6 +100,7 @@ function Header({ isOpen, toggleSidebar }: SidebarProps) {
                 display: { xs: "none", md: "block" },
                 p: 0,
                 color: "white",
+                minWidth: "min-content"
               }}
             >
               <FaRegUser className="text-xl m-auto" />
