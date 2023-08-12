@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image'
 import Button from "@mui/material/Button";
 import { Typography, TextField, InputAdornment, IconButton, Alert, Box, Divider } from "@mui/material";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
@@ -11,6 +12,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginDto } from "@/utils/api/types";
 import { setCookie } from "nookies";
 import { userApi } from "@/utils/api";
+import logo from '@/assets/Eilibay.svg'
+
+
+
+import whatsapp from '@assets/icons/whatsap.svg'
+import telega from '@assets/icons/telega.png'
+import google from '@assets/icons/google_ic.svg'
 
 function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -42,10 +50,25 @@ function Login() {
       <UserAnimation />
       <div className="text-center max-h-[650px] h-min md:w-6/12 w-full">
         <div className="login px-5">
-          <Typography variant="h2" sx={{ color: "primary.main", fontSize: { xs: 24, md: 32, lg: 36, xl: 40 } }}>
+          
+
+          <Typography variant="h2" sx={{display:{xs:"none",md:"block"}, color: "primary.main", fontSize: { xs: 24, md: 32, lg: 36, xl: 40 } }}>
             Добро пожаловать! <br />
             Рады видеть тебя снова.
           </Typography>
+          <Box sx={{display:{xs:"block",md:"none"}}}>
+            <Image
+              className='m-auto mb-2.5 w-10 md:w-[60px]'
+              src={logo}
+              width={80}
+              height={100}
+              alt="logo img " />
+              <Typography variant='h2' sx={{fontSize:{md:24,lg:36}}}>
+                Eilbay
+              </Typography>
+          </Box>
+
+          
 
           <Box sx={{ mx: "auto", maxWidth: 400, width: "100%" }}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -104,10 +127,37 @@ function Login() {
               </Typography>
             </Divider>
 
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <Button variant="outlined" sx={{ width: "100%", mt: 2.5, borderRadius: 2, height: "54px" }}>W</Button>
-              <Button variant="outlined" sx={{ width: "100%", mt: 2.5, borderRadius: 2, height: "54px" }}>W</Button>
-              <Button variant="outlined" sx={{ width: "100%", mt: 2.5, borderRadius: 2, height: "54px" }}>W</Button>
+            <Box sx={{ display: "flex" }}>
+              <Button
+                variant="outlined"
+                sx={{
+                  height: "52px",
+                  width: "100%",
+                  mr: 1,
+                  mt: 2.5,
+                  borderRadius: 2,
+                }}
+              >
+                <Image src={whatsapp} alt="" width={30}></Image>
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  height: "52px",
+                  width: "100%",
+                  mr: 1,
+                  mt: 2.5,
+                  borderRadius: 2,
+                }}
+              >
+               <Image src={google} alt="" width={30}></Image>
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{ height: "52px", width: "100%", mt: 2.5, borderRadius: 2 }}
+              >
+               <Image src={telega} alt="" width={30}></Image>
+              </Button>
             </Box>
 
             <Typography sx={{ mt: 2, fontSize: "18px" }}>

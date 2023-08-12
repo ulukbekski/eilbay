@@ -5,6 +5,8 @@ import { actions as favoritesActions } from "@/store/favorites/favorites.slice";
 import { fetchProductsStart, fetchProductsSuccess, fetchProductsFailure } from "@/store/products/products.slice";
 import { setLoggedIn, setUser } from "@/store/user/user.slice";
 import { setQuery } from "@/store/search/search.slice";
+import { setCurrency } from "@/store/currency/currency.slice";
+import { setFilter } from "@/store/filter/filter.slice";
 
 const rootActions = {
   ...favoritesActions,
@@ -13,7 +15,10 @@ const rootActions = {
   fetchProductsFailure,
   setUser,
   setLoggedIn,
-  setQuery
+  setQuery,
+  setCurrency,
+  setFilter,
+
 };
 
 export const useActions = () => {

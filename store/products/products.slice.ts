@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '@/models';
+import { Product } from '@/utils/models';
 
 interface ProductState {
   products: Product[];
@@ -23,7 +23,8 @@ const productSlice = createSlice({
     },
     fetchProductsSuccess(state, action: PayloadAction<Product[]>) {
       state.loading = false;
-      state.products = [...initialState.products,...action.payload];
+      const product = [...action.payload];
+      state.products = product.map(obj => {return {...obj, price: obj.price * 3}})
       
     },
     fetchProductsFailure(state, action: PayloadAction<string>) {

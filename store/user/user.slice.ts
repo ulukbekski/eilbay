@@ -1,4 +1,4 @@
-import { UserProfileProps } from '@/models';
+import { UserProfileProps } from '@/utils/models';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
@@ -10,7 +10,7 @@ const initialState: UserProfileProps = {
   isLoggedIn: false,
   avatar: undefined,
   rating: 4.3,
-  country: {name:"china",code:"ch"}
+  country: {name:"Кyrgyzstan",code:"KGS"}
 };
 
 const userSlice = createSlice({

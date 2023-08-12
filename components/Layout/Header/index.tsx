@@ -2,15 +2,15 @@ import React from "react";
 import Image from "next/image";
 import { Container, Button, Typography, IconButton } from "@mui/material";
 import logo from "@/assets/butterfly.svg";
-import Search from "../UI/HeaderSearch";
+import Search from "./HeaderSearch";
 import { HiOutlineHeart } from "react-icons/hi";
 import { BiChat, BiPlus } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
-import LanguageSelect from "../UI/LanguageSelect";
-import { useFavorites } from "@/hooks/useFavorites";
-import MenuIconButton from "../UI/MenuIconButton";
+import LanguageSelect from "./LanguageSelect";
+import { useFavorites } from "@/utils/hooks/useFavorites";
+import MenuIconButton from "./MenuIconButton";
 import Link from "next/link";
-import { useUser } from "@/hooks/useUser";
+import { useUser } from "@/utils/hooks/useUser";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -52,7 +52,7 @@ function Header({ isOpen, toggleSidebar }: SidebarProps) {
             </Typography>
           </Button>
         </Link>
-        <Search sx={{maxWidth:'500px',width:"100%", display:{xs:"none",md:'block'}}} />
+        <Search sx={{maxWidth:'500px',width:"100%", display:{xs:"none",md:'block',color: 'white'}}} />
         {/* <LanguageSelect/> */}
 
         <nav className="gap-[14px] flex">

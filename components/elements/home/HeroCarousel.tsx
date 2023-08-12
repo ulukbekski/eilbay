@@ -5,10 +5,6 @@ import Image, { StaticImageData } from 'next/image';
 import image from 'assets/HeroImage.jpg';
 import image1 from 'assets/HeroImage1.png';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
-import { relative } from 'path';
-
-
-
 
 interface ItemProps {
   name: string;

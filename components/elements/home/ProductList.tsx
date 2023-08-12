@@ -1,32 +1,37 @@
 import React,{useState,useEffect} from "react";
 import { Container, Button } from "@mui/material";
 import ProductCard from "./ProductCard";
-import { useProducts } from "@/hooks/useProducts";
+import { useProducts } from "@/utils/hooks/useProducts";
+import { useSearchValue } from "@/utils/hooks/useSearchValue";
+import { useFilters } from "@/utils/hooks/useFilters";
+import { productsApi } from "@/utils/api";
 
-// import { fetchProductsStart, fetchProductsSuccess } from "@/store/products/products.slice";
-import { useActions } from "@/hooks/useAction";
-import axios from "axios";
-import { useSearchValue } from "@/hooks/useSearchValue";
 
 
 function ProductList() {
-  // const [products, setProducts] = useState<ProductCardProps[]>([]);
+ 
   const products = useProducts()
-  const {fetchProductsSuccess} = useActions()
+  const filters = useFilters()
   const searchValue = useSearchValue()
-  const add = async () => {
-    const res = await axios.get('http://80.90.184.58/api/product')
-    fetchProductsSuccess(res.data)
-  }
   
   React.useEffect(()=>{
-    add()
+    productsApi.getProducts()
   },[])
-
+  const filteredProducts = products.filter(product => 
+    product.name.toUpperCase().includes(searchValue.query.toUpperCase())
+    &&
+    (
+      filters.minPrice < product.price 
+        &&
+      filters.maxPrice > product.price
+    )
+    
+    
+    )
   return (
     <Container sx={{ mt: 1 ,p:{xs:0,md:1} }}>
       <div className=" flex-center flex-wrap gap-[22px] md:gap-[16px] nowrap mt-[34px]">
-        {products.filter(obj => obj.name.toUpperCase().includes(searchValue.query.toUpperCase())).map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}
       </div>

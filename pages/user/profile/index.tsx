@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, Box, Grid, Link, Typography, Container } from '@mui/material';
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@/utils/hooks/useUser';
 
 const Profile = () => {
   const user = useUser()

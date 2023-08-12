@@ -2,20 +2,22 @@ import React from 'react';
 
 
 import { FormControl,Container, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, SelectChangeEvent, Typography } from '@mui/material';
+// import { setCurrency } from '@/store/currency/currency.slice';
+import { useActions } from '@/utils/hooks/useAction';
+import { useCurrency } from '@/utils/hooks/useCurrency';
+import CurrencySelect from '@/components/UI/CurrencySelect';
 
 interface CustomSelectProps {
     obj: SelectDataItem;
   }
   
   const CustomSelect: React.FC<CustomSelectProps> = ({ obj }) => {
-  
-  
     const [age, setAge] = React.useState<string>(obj.defaultValue);
     const handleChange = (event: SelectChangeEvent<string>) => {
       setAge(event.target.value as string);
+      if(obj.functions){ obj.functions(event.target.value as string);
+      }
     };
-  
-    
     return (
       <>
         <FormControl key={'select' + obj.id} sx={{ width: "175px" }}>
@@ -25,6 +27,7 @@ interface CustomSelectProps {
             id="demo-simple-select"
             value={age}
             label={obj.label}
+            defaultValue={obj.defaultValue}
             onChange={handleChange}>
             {obj.MenuItems.map((item: string) => (
               <MenuItem sx={{ fontSize: "16px" }} key={item + 'menuItem'} value={item}>
@@ -38,55 +41,59 @@ interface CustomSelectProps {
   };
   
 interface SelectDataItem {
-    id: number;
+    id:  number;
     label: string;
     defaultValue: string;
     MenuItems: string[];
+    functions:  null | Function;
   }
   
   
-const SelectData: SelectDataItem[] = [
+
+
+
+export default function ProductListFilters() {
+  
+  const { setCurrency } = useActions()
+  const currency = useCurrency()
+
+  const SelectCountryData: SelectDataItem = 
     {
       id: 1,
       label: 'Страны',
       defaultValue: 'Все',
       MenuItems: ["Все", 'Кыргызстан', 'Казакстан', 'Китай'],
-    },
-    {
-      id: 2,
-      label: 'Категории',
-      defaultValue: "Женское",
-      MenuItems: ['Детское', 'Женское', 'Мужское'],
-    },
-    {
-      id: 3,
-      label: 'Подкатегории',
-      defaultValue: '',
-      MenuItems: ['Оверсайз', 'Классика', 'Спортивная одежда'],
-    },
-    {
-      id: 4,
-      label: 'Валюта',
-      defaultValue: 'Сом',
-      MenuItems: ['Сом', 'Рубль', 'Доллар'],
-    },
-  ];
-
-
-export default function ProductListFilters() {
+      functions: null
+    }
+  const SelectCategoryData ={
+    id: 2,
+    label: 'Категории',
+    defaultValue: "Все",
+    MenuItems: ['Все','Детское', 'Женское', 'Мужское'],
+    functions: null
+  }
+  const SelectSubcategoryData = {
+    id: 3,
+    label: 'Подкатегории',
+    defaultValue: '',
+    MenuItems: ['Оверсайз', 'Классика', 'Спортивная одежда'],
+    functions: null
+  }
+ 
   return (
     <Container>
-
-  
     <div>
       <div className="flex-start text-black gap-2 ">
         <Typography variant="h2">Женская одежда</Typography>
         <p>10000+ товаров</p>
       </div>
       <div className="hidden md:flex flex-start gap-3 mt-2 flex-wrap ">
-        {SelectData.map((obj: SelectDataItem) => (
-          <CustomSelect key={obj.id} obj={obj} />
-        ))}
+        
+        
+        <CustomSelect obj={SelectCountryData}  />
+        <CustomSelect obj={SelectCategoryData}  />
+        <CustomSelect obj={SelectSubcategoryData}  />
+        <CurrencySelect />
         <FormControl sx={{ width: "125px" }}>
           <InputLabel htmlFor="outlined-adornment-amount">Мин. цена</InputLabel>
           <OutlinedInput

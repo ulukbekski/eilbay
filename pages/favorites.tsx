@@ -1,8 +1,8 @@
 import React from "react";
-import { useFavorites } from "@/hooks/useFavorites";
+import { useFavorites } from "@/utils/hooks/useFavorites";
 import { Container, Typography, Box } from "@mui/material";
 import Image from "next/image";
-import { useSearchValue } from "@/hooks/useSearchValue";
+import { useSearchValue } from "@/utils/hooks/useSearchValue";
 
 export default function Favorites() {
   const favorites = useFavorites();

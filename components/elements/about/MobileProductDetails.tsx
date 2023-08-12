@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography'
 import Divider from "@mui/material/Divider";
 import { Rating } from "@mui/material";
-import { Product } from "@/models";
+import { Product } from "@/utils/models";
 
 interface MPDprops {
   medias: string[];
@@ -72,7 +72,7 @@ export default function MPD({ medias, product}: MPDprops) {
             </Typography>
           </Box>
         </Box>
-        <Box maxWidth={400}  >
+        <Box  >
               <Typography
                 variant="body1"
                 fontSize={16}
@@ -81,16 +81,15 @@ export default function MPD({ medias, product}: MPDprops) {
               >
                 О товаре
               </Typography>
-              <Typography variant="body1" fontSize={14} color="initial">
-                Название: {name}
+              <Typography variant="body1" fontSize={14} sx={{my:2}} color="initial">
+                Название: <b>{name}</b>
               </Typography>
               <Typography variant="body1" fontSize={14} color="initial">
                 Описание:
-              </Typography>
-              <Typography variant="body1" fontSize={14} color="initial">
+              <br />
                 {description}
               </Typography>
-              <Divider />
+              <Divider sx={{my:2}} />
               <Typography
                 variant="body1"
                 fontSize={16}
@@ -107,7 +106,7 @@ export default function MPD({ medias, product}: MPDprops) {
                 {" "}
                 Подкатегория : {sub_category?.name}
               </Typography>
-              <Divider />
+              <Divider sx={{my:2}} />
               <Typography
                 variant="body1"
                 fontSize={16}

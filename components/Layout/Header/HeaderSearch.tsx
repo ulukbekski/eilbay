@@ -3,7 +3,7 @@ import { TextField, Box, InputAdornment, IconButton } from "@mui/material";
 import {GoSearch} from 'react-icons/go'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from 'next/link'
-import { useActions } from "@/hooks/useAction";
+import { useActions } from "@/utils/hooks/useAction";
 
 interface SearchProps {
   sx: object;
@@ -19,8 +19,7 @@ const theme = createTheme({
           borderRadius: "8px",
           position: 'relative',
           overflow:"hidden",
-          color:'#ffffff',
-          
+          color: 'inherit',
           outline:'none',
           '&:focus':{
             outline:'none',
@@ -43,8 +42,8 @@ const theme = createTheme({
       styleOverrides:{
         root:{
           fontSize: 16,
-          color:"white",
           paddingRight:"0px",
+          color:"inherit"
         }
       }
     },
@@ -69,7 +68,7 @@ const Search = ({sx}:SearchProps) => {
         placeholder="Search"
         // variant="outlined"
         size="small"
-        sx={{ mr: 1,width:"100%",bgcolor:"#f7f8f900",color:'white',}}
+        sx={{ mr: 1,width:"100%",bgcolor:"#f7f8f900"}}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end"  sx={{cursor:"pointer"}}>

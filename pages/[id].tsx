@@ -4,22 +4,25 @@ import React from "react";
 import IconButton from "@mui/material/IconButton";
 import { BsChevronLeft } from "react-icons/bs";
 import { HiOutlineHeart, HiShare } from "react-icons/hi";
-import { useActions } from "@/hooks/useAction";
-import { useFavorites } from "@/hooks/useFavorites";
+import { useActions } from "@/utils/hooks/useAction";
+import { useFavorites } from "@/utils/hooks/useFavorites";
 import { FcLike } from "react-icons/fc";
 import Box from "@mui/material/Box";
 import { useRouter, usePathname } from "next/navigation";
-import { Product } from "@/models";
+import { Product } from "@/utils/models";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
-import axios from "axios";
 import { Card, Divider, Rating, Button } from "@mui/material";
 import ProductList from "@/components/elements/home/ProductList";
 import MPD from "@/components/elements/about/MobileProductDetails";
+import { useCurrency } from "@/utils/hooks/useCurrency";
+import { productsApi } from "@/utils/api";
+import { AxiosResponse } from "axios";
 
 
 
 export default function ProductProfile() {
+  const currency = useCurrency()
   const pathnameString = usePathname();
   const pathId = !isNaN(+pathnameString?.slice(1))
     ? +pathnameString?.slice(1)
@@ -28,26 +31,16 @@ export default function ProductProfile() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    async function getProduct() {
-      try {
-        const response = await axios.get(
-          `http://80.90.184.58/api/product/${pathId}`
-        );
-        setProduct(response.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getProduct();
+    productsApi.getProduct(pathId)
+    .then(data => setProduct(data))
+    .finally( () => setIsLoading(false) )
   }, [pathId]);
 
   const favorites = useFavorites();
   const { toggleFavorites } = useActions();
   const router = useRouter();
 
-  if (product && !isLoading) {
+  if (product.id && !isLoading) {
     const {
       id,
       price,
@@ -64,6 +57,7 @@ export default function ProductProfile() {
       sale_price,
       media,
     } = product;
+
     const medias = [...media?.map((obj) => obj.image)];
     const isFavorite = favorites.some((r: any) => r.id === id);
     const handleToggleFavorites = (item: any) => {
@@ -129,7 +123,7 @@ export default function ProductProfile() {
               gap={2}
             >
               <Box
-                maxWidth={400}
+                
                 maxHeight={500}
                 sx={{ overflow: "hidden", borderRadius: 3 }}
               >
@@ -163,16 +157,16 @@ export default function ProductProfile() {
               >
                 О товаре
               </Typography>
-              <Typography variant="body1" fontSize={14} color="initial">
+              <Typography variant="body1" sx={{my:1}} fontSize={14} color="initial">
                 Название: {name}
               </Typography>
-              <Typography variant="body1" fontSize={14} color="initial">
+              <Typography variant="body1" fontSize={14}  color="initial">
                 Описание:
               </Typography>
               <Typography variant="body1" fontSize={14} color="initial">
                 {description}
               </Typography>
-              <Divider />
+              <Divider sx={{my:2}} />
               <Typography
                 variant="body1"
                 fontSize={16}
@@ -189,7 +183,7 @@ export default function ProductProfile() {
                 {" "}
                 Подкатегория : {sub_category?.name}
               </Typography>
-              <Divider />
+              <Divider sx={{my:2}} />
               <Typography
                 variant="body1"
                 fontSize={16}
@@ -244,7 +238,7 @@ export default function ProductProfile() {
               </Typography>
             </Box>
             <Box display={"flex"} justifyContent="space-between" mb={2}>
-              <Typography variant="body1" color="initial"  fontWeight='bold' fontSize={20} > {price} <u>C</u></Typography>
+              <Typography variant="body1" color="initial"  fontWeight='bold' fontSize={20} > {Math.ceil((price * currency.rate) * 100) / 100 } {currency.code.toLowerCase()}</Typography>
               {sale && <span>{sale_price} <u>c</u></span> }
               {isFavorite ? (
                 <FcLike className="text-3xl" />

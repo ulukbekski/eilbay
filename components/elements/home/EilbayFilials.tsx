@@ -22,7 +22,7 @@ export default function EilbayFilials(props: Props) {
             height={250}
           />
 
-          <Box display="flex" minWidth="400px"  justifyContent='space-between' >
+          <Box display="flex" minWidth="320px"  justifyContent='space-between' >
               <Typography component="ul" color='primary' whiteSpace="nowrap">
                 <Typography component="li">KG - г. Ош</Typography>
                 <Typography component="li">UZ - г. Ташкент</Typography>
