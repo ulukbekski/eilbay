@@ -20,7 +20,7 @@ interface SidebarProps {
 function Header({ isOpen, toggleSidebar }: SidebarProps) {
   const user = useUser();
   return (
-    <header className="bg-default h-[100px] flex items-center ">
+    <header className="bg-default h-[60px] md:h-[100px] flex items-center ">
       <Container
         sx={{
           display: "flex",
@@ -101,8 +101,7 @@ function Header({ isOpen, toggleSidebar }: SidebarProps) {
                 p: 0,
                 color: "white",
                 minWidth: "min-content"
-              }}
-            >
+              }}>
               <FaRegUser className="text-xl m-auto" />
 
               <Typography sx={{ fontSize: "14px", textTransform: "none" }}>
@@ -116,8 +115,7 @@ function Header({ isOpen, toggleSidebar }: SidebarProps) {
                 display: { xs: "none", md: "block" },
                 p: 0,
                 color: "white",
-              }}
-            >
+              }}>
               <BiPlus className="text-xl m-auto text-bold" />
               <Typography sx={{ fontSize: "14px", textTransform: "none" }}>
                 Добавить

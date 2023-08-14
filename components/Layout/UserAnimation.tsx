@@ -28,10 +28,8 @@ function UserAnimation() {
         src={BigImg}
         alt="Rafiki"
         width={500}
-        height={500}
-   
-      />
-
+        height={500}/>
+        
       <span><Link href="/" className='underline font-bold mt-7'>Политика конфиденциальности </Link></span>
     </div>
 

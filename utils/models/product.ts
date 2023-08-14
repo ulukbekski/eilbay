@@ -19,18 +19,27 @@ export interface ProductSub_Category{
 export interface Product {
     id: number;
     name: string;
-    price: number;
     description: string;
-    category: ProductCategory;
     main_image: string;
-    sale: boolean;
+    artikul: string;
     sale_price: number | null;
+    owner: number;
+    price: number;
+    currency: {
+        id: number;
+        name: string;
+    };
+    user_info: {
+        id: number;
+        username: string;
+        profile_image: string;
+    }
+    category: ProductCategory;
+    sale: boolean;
     media: ProductMedia[] | [];
     sub_category: ProductSub_Category | null;
-    artikul: string;
     rating: number;
     ratingAmount: number;
-    owner:string;
 }
 
 

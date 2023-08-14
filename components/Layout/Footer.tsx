@@ -11,17 +11,19 @@ import {
   Box,
   TextField,
   Button,
+  Divider,
 } from "@mui/material";
 
 function Footer() {
   return (
     // Desktop Footer
     <footer className="bg-default pt-[60px] pb-[30px]">
-      <Container
+      <Container 
         sx={{
           display: { xs: "none", sm: "none", md: "flex", },
           justifyContent: "space-between",
           flexWrap: { sm: "wrap", md: "nowrap" },
+         
         }}
       >
         <Box>
@@ -70,9 +72,17 @@ function Footer() {
             Отправить
           </Button>
         </div>
+
+       
+      </Container>
+      <Container>
+        <Divider sx={{background:"#FFF3", my:"20px"}}/>
+        <Box sx={{height:20, fontSize: "14px", mb:"24px"}}>
+          
+        © 2023 Сделано копманией IT Park. <br /> Все права защишены.
+        </Box>
       </Container>
 
-      {/* // Mobile footer */}
       <MobileFooter/>
     </footer>
   );

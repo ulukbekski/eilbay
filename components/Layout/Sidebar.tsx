@@ -148,7 +148,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
-      <div  className={`overflow-hidden absolute z-50 bg-[white] ${isOpen ? "w-[250px]":"w-0"}`}>
+      <div  className={`overflow-hidden absolute z-50 bg-[white] duration-500  ${isOpen ? "w-[250px]":"w-0"}`}>
         <div>
           {/* <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
             <IconButton onClick={onClose}>

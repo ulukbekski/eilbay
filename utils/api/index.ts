@@ -21,8 +21,8 @@ export const userApi = {
 
 export const productsApi = {
   async getProducts(){
-    const {data} = await instance.get("/product")
-    fetchProductsSuccess(data)
+    const {data} = await instance.get<Product[]>("/product")
+    return data
   },
   async getProduct(_id:number){
     try {
@@ -30,13 +30,16 @@ export const productsApi = {
       return product
     } catch (error) {
       console.error(error);
-
     }
-    
   }
 
 }
+export const categoryApi = {
+  async getProducts(){
+    const {data} = await instance.get("/categori")
     
+  }
+}
 
 
 
@@ -61,12 +64,7 @@ export const productsApi = {
 //     }
 //   };
 
-// import axios from "axios";
-// import { Product } from "./types";
 
-// const instance = axios.create({
-//   baseURL: "https://example.com/api",
-// });
 
 // export const productApi = {
 //   async create(product: Product) {

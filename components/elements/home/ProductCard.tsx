@@ -45,8 +45,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Card sx={{ 
-      width: {xs:"165px",sm:'180px',md:'211px',boxShadow:3}, 
-      position: "relative" }}>
+      width: {xs:"165px",sm:'180px',md:'211px'},
+      position: "relative",
+      boxShadow: "0px 0px 12px 0px rgba(61, 66, 74, 0.20)}",
+    }} 
+      
+      >
       <CardMedia component="img" sx={ {width: {xs:"165px",sm:'180px',md:'211px'}, height: {xs:"160px",sm:'180px',md:'211px'}}} 
        image={main_image} 
        alt={name} />

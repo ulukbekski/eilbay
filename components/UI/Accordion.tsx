@@ -40,12 +40,14 @@ const AccordionComponent: React.FC<Props> = ({ categories }) => {
         <div key={index}>
         <Accordion
           expanded={expanded === `panel${index}`}
-          onChange={() => handleChange(`panel${index}`)}
+          onChange={handleChange(`panel${index}`)}
+          style={accordionContainerStyle}
         >
           <AccordionSummary
             expandIcon={<HiOutlineChevronRight />}
             aria-controls={`panel${index}bh-content`}
             id={`panel${index}bh-header`}
+            sx={accordionStyle}
           >
             <Image 
               src={category.categoryIcon}

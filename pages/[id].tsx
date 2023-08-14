@@ -29,18 +29,19 @@ export default function ProductProfile() {
     : 2;
   const [product, setProduct] = React.useState<Product>();
   const [isLoading, setIsLoading] = React.useState(true);
-
+  // @ts-ignore
   React.useEffect(() => {
     productsApi.getProduct(pathId)
     .then(data => setProduct(data))
-    .finally( () => setIsLoading(false) )
+    .catch(err => console.warn(err))
+    .finally(() => setIsLoading(false) )
   }, [pathId]);
 
   const favorites = useFavorites();
   const { toggleFavorites } = useActions();
   const router = useRouter();
-
-  if (product.id && !isLoading) {
+  // @ts-ignore
+  if (product.id) {
     const {
       id,
       price,

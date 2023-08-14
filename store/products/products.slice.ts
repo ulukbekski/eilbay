@@ -23,8 +23,8 @@ const productSlice = createSlice({
     },
     fetchProductsSuccess(state, action: PayloadAction<Product[]>) {
       state.loading = false;
-      const product = [...action.payload];
-      state.products = product.map(obj => {return {...obj, price: obj.price * 3}})
+      state.products = [...action.payload]
+      console.log("asdf", action.payload)
       
     },
     fetchProductsFailure(state, action: PayloadAction<string>) {

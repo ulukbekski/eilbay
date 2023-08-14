@@ -9,6 +9,7 @@ import {
 import { useActions } from "@/utils/hooks/useAction";
 import { useCurrency } from "@/utils/hooks/useCurrency";
 import axios from "axios";
+import { BsChevronDown } from "react-icons/bs";
 
 export interface Currency {
   code: string;
@@ -26,13 +27,13 @@ const CurrencySelect: React.FC = () => {
 
   const som = {
     code: "KGS",
-    // symbol: "c",
     name: "Kyrgyzstan som",
     rate: 1,
   };
   const [rates, setRates] = React.useState<Currency>(som);
 
   const [data, setData] = React.useState<Currency[]>([som]);
+  const [isClient, setIsClient] = React.useState(false);
 
   React.useEffect(() => {
     const getRates = async () => {
@@ -51,6 +52,7 @@ const CurrencySelect: React.FC = () => {
       }
     };
     getRates();
+    setIsClient(true);
   }, []);
 
   const handleChange = (event: SelectChangeEvent<string>) => {
@@ -61,10 +63,12 @@ const CurrencySelect: React.FC = () => {
     setMenuItem(eve);
     setCurrency(rates);
   };
-
+  const Chevronicon = () => <BsChevronDown className='text-4xl mr-2'/>
   return (
     <>
-      <FormControl sx={{ width: "175px" }}>
+      <FormControl 
+      size={isClient && window.innerWidth < 900 ? "small" : "medium"}
+      >
         <InputLabel id="demo-simple-select-label2">Валюта</InputLabel>
         <Select
           labelId="demo-simple-select-label2"
@@ -73,6 +77,7 @@ const CurrencySelect: React.FC = () => {
           label="Валюта"
           defaultValue={menuItem}
           onChange={handleChange}
+          IconComponent={Chevronicon}
         >
           {currencyNames.map((item: string) => (
             <MenuItem
