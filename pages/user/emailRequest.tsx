@@ -28,9 +28,11 @@ function EmailRequest() {
           </Typography>
 
           <Box sx={{ mx: "auto", maxWidth: 400, width: "100%" }}>
+
             <Typography sx={{ color: "secondary.main", textAlign: "left", mt: 2.5 }}>
               Пожалуйста напишите адрес вашей электронной почты для получения кода
             </Typography>
+            
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <TextField
                 type="text"

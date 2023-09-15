@@ -2,12 +2,9 @@ import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Paper, Container} from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
-import imgage from 'assets/HeroImage.png';
+import image from 'assets/HeroImage.jpg';
+import image1 from 'assets/HeroImage1.png';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
-import { relative } from 'path';
-
-
-
 
 interface ItemProps {
   name: string;
@@ -19,38 +16,38 @@ const items: ItemProps[] = [
   {
     name: "Random Name #1",
     description: "Probably the most random thing you have ever seen!",
-    img: imgage
+    img: image
   },
   {
     name: "Random Name #2",
     description: "Hello World!",
-    img: imgage
+    img: image1
   },
   {
     name: "Random Name #2",
     description: "Hello World!",
-    img: imgage
+    img: image
   },
   {
     name: "Random Name #2",
     description: "Hello World!",
-    img: imgage
+    img: image
   },
   {
     name: "Random Name #2",
     description: "Hello World!",
-    img: imgage
+    img: image
   },
 ];
 
 export default function HeroCarousel() {
   return (
 
-<Container sx={{p:4, minHeight:"300px",position:"relative"}}>
+<Container sx={{p:0, minHeight:"300px",position:"relative"}}>
     <Carousel
     sx={{ 
-        borderRadius:"20px", 
-       
+        borderRadius:"20px",
+        pt:2 
         }}
     navButtonsProps={{          
       style: {

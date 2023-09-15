@@ -12,6 +12,5 @@ export const DarkButton = styled(Button)({
     outline:"none",
     component:'button',
     variant: 'contained',
-    width:"100%",
-    
+    width:"100%"
   });

@@ -22,16 +22,14 @@ function UserAnimation() {
       </div>
 
       <Typography variant='h2' sx={{fontSize:{md:24,lg:36}}}>
-        Eilibay
+        Eilbay
       </Typography>
       <Image
         src={BigImg}
         alt="Rafiki"
         width={500}
-        height={500}
-   
-      />
-
+        height={500}/>
+        
       <span><Link href="/" className='underline font-bold mt-7'>Политика конфиденциальности </Link></span>
     </div>
 

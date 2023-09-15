@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import CloseIcon from '@mui/icons-material/Close';
-import { IconButton } from '@mui/material';
+
 import AccordionComponent from '@UI/Accordion';
 
 import MensIcon from '@icons/men.svg';
@@ -142,47 +140,25 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-const DrawerContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})<{ isOpen: boolean }>`
-  height: 100%;
-  transition: 1s;
-  width: 320px;
-  position:absolute;
-  left:0;
-  top:0;
-  z-index:2000;
-  background-color:white;
-  overflow:hidden;
-
-  ${({ isOpen }) =>
-    !isOpen &&
-    css`
-      width: 0;
-      transition: 0.7s;
-      overflow: hidden;
-    `}
-
-      @media (min-width:1200px) {
-        display:block;
-      }
-`;
 
 
-const DrawerPaper = styled.div``;
+
+
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
-      <DrawerContainer isOpen={isOpen}>
-        <DrawerPaper>
-          <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
+    <>
+      <div  className={`overflow-hidden absolute z-50 bg-[white] duration-500  ${isOpen ? "w-[250px]":"w-0"}`}>
+        <div>
+          {/* <div style={{ display: "flex", justifyContent: "flex-end", padding: "8px" }}>
             <IconButton onClick={onClose}>
               <CloseIcon />
             </IconButton>
-          </div>
+          </div> */}
           <AccordionComponent categories={categories} />
-        </DrawerPaper>
-      </DrawerContainer>
+        </div>
+      </div>
+    </>
     
 );
 };

@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserProfileProps } from '@/utils/models';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface UserData {
   id: number|null;

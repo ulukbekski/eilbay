@@ -1,58 +1,40 @@
-import { FC } from 'react';
-import { Avatar, Box, Grid, Link, Typography } from '@mui/material';
-// import FlagIcon from 'flag-icons/react';
+import React from 'react'
+import { Avatar, Box, Grid, Link, Typography, Container } from '@mui/material';
+import { useUser } from '@/utils/hooks/useUser';
 
-interface Country {
-  name: string;
-  code: string;
-}
-
-interface ProfileProps {
-  fullName: string;
-  avatar: string;
-  products?: any[];
-  rating: number;
-  country?: Country;
-  description: string;
-}
-
-
-const Profile: FC<ProfileProps> = ({
-  fullName,
-  avatar,
-  products,
-  rating,
-  country,
-  description,
-}) => {
+const Profile = () => {
+  const user = useUser()
+  const {fullName, avatar, products, rating, country, bio} = user
+  console.log(user)
   return (
-    <Box sx={{ mb: 4 }}>
+    <Box sx={{ mb: 4 }} color='initial'>
+      <Container>
       <Typography variant="h4" align="center" gutterBottom>
         {fullName}
       </Typography>
-      <Grid container spacing={2} justifyContent="center" alignItems="center" mb={2}>
-        <Avatar src={avatar} alt="avatar" sx={{ width: 64, height: 64 }} />
-        <Grid item xs={3}>
-          <Typography variant="h5" align="center">
-            {products?.length}
+      <Grid container spacing={2} justifyContent="center" alignItems="center" m={0}>
+        <Avatar src={avatar} alt="avatar" sx={{ width: 200, height: 200 }} />
+        <Grid item xs={2}>
+          <Typography variant="h5" align="center" fontWeight={600} >
+            {products?.length} 0
           </Typography>
-          <Typography variant="subtitle2" align="center">
+          <Typography variant="subtitle2" align="center" >
             Публикаций
           </Typography>
         </Grid>
-        <Grid item xs={3}>
-          <Typography variant="h5" align="center">
+        <Grid item xs={2}>
+          <Typography variant="h5" align="center" fontWeight={600} >
             {rating}
           </Typography>
-          <Typography variant="subtitle2" align="center">
+          <Typography variant="subtitle2" align="center" >
             Рейтинг
           </Typography>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           {country && (
             <>
               {/* <FlagIcon code={country.code.toLowerCase()} size={32} /> */}
-              <Typography variant="subtitle2" align="center">
+              <Typography variant="subtitle2" align="center" >
                 {country.name}
               </Typography>
             </>
@@ -60,9 +42,9 @@ const Profile: FC<ProfileProps> = ({
         </Grid>
       </Grid>
 
-      <Box textAlign="center" mb={2}>
-        <Typography variant="h5">{fullName}</Typography>
-        <Typography variant="body1">{description}</Typography>
+      <Box  mb={2}>
+        <Typography variant="h5" >{fullName}</Typography>
+        <Typography variant="body1" >{bio}</Typography>
       </Box>
 
       <Grid container justifyContent="center" alignItems="center">
@@ -82,6 +64,7 @@ const Profile: FC<ProfileProps> = ({
           <Avatar src="/assets/Rectangle 1994.png" alt="logo img " />
         </Link>
       </Grid>
+      </Container>
     </Box>
   );
 };

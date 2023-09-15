@@ -5,26 +5,36 @@ import { PiHouse, PiHouseFill } from "react-icons/pi";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { BsPlusSquare, BsPlusSquareFill } from "react-icons/bs";
+import Link from 'next/link'; 
+
 
 const icons = [
-  { label: "Home", iconInactive: <PiHouse />, iconActive: <PiHouseFill /> },
+  { 
+    label: "Home",
+    href: "/",
+    iconInactive: <PiHouse />,
+    iconActive: <PiHouseFill /> },
   {
     label: "Search",
+    href: "/search",
     iconInactive: <RiSearchLine />,
     iconActive: <RiSearchFill />,
   },
   {
     label: "Add",
+    href: "/add",
     iconInactive: <BsPlusSquare />,
     iconActive: <BsPlusSquareFill />,
   },
   {
     label: "Favorites",
+    href: "/favorites",
     iconInactive: <RxHeart />,
     iconActive: <RxHeartFilled />,
   },
   {
     label: "Profile",
+    href: "/user/profile",
     iconInactive: <IoPersonOutline />,
     iconActive: <IoPerson />,
   },
@@ -50,16 +60,7 @@ export default function MobileFooter() {
     newActiveState[index] = true;
     setActive(newActiveState);
   };
-  const IconBtn = ({ label, icon, index }: IconBtnProps) => {
-    return (
-      <BottomNavigationAction
-        label={label}
-        icon={icon}
-        sx={{ minWidth: "40px", color:'#1E232C' }}
-        onClick={() => handleIconClick(index)}
-      />
-    );
-  };
+
   return (
     <BottomNavigation
       sx={{
@@ -69,18 +70,20 @@ export default function MobileFooter() {
         display: { xs: "flex", sm: "flex", md: "none" },
         justifyContent: "space-around",
         fontSize: "24px",
-        color:"#1E232C"
+        color:"#1E232C",
+        zIndex:100,
       }}
     >
-      {icons.map((icon, index) => (
-        <IconBtn
-          key={index}
-          index={index}
-          label={icon.label}
-          icon={active[index] ? icon.iconActive : icon.iconInactive}
-          
-        />
-      ))}
+      {icons.map((icon, index) => 
+        <Link key={index+'aa'} href={icon.href} >
+          <BottomNavigationAction
+            onClick={() => handleIconClick(index)}
+            // label={icon.label}
+            icon={active[index] ? icon.iconActive : icon.iconInactive}
+            sx={{ minWidth: "40px", color:'#1E232C' }}
+          />
+        </Link>
+      )}
     </BottomNavigation>
   );
 }
